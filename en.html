@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Economic Dynamics & Policy — Research Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --slate: #1C3B5A;
+    --accent: #4A7FA5;
+    --gold: #C4A35A;
+    --gold-light: #D4B87A;
+    --ivory: #F5F0E8;
+    --text-muted: #8A9BB0;
+    --text-body: #C8D5E0;
+    --border: rgba(74,127,165,0.2);
+    --border-gold: rgba(196,163,90,0.3);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--navy); color: var(--text-body); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13,27,42,0.92); backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+    padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 60px;
+  }
+  .nav-logo { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 13px; color: var(--text-muted); letter-spacing: 0.04em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ivory); }
+  .lang-switch { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; padding: 3px 8px; border: 0.5px solid var(--border-gold); color: var(--gold); text-decoration: none; text-transform: uppercase; transition: background 0.2s; }
+  .lang-switch:hover { background: rgba(196,163,90,0.1); }
+
+  .hero {
+    min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(74,127,165,0.06) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 60% at 20% 80%, rgba(196,163,90,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 8rem 3.5rem 4rem; position: relative; z-index: 1; }
+  .hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+  .hero-eyebrow::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--gold); }
+  .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 400; line-height: 1.12; color: var(--ivory); margin-bottom: 0.4rem; }
+  .hero-title em { font-style: italic; color: var(--gold-light); }
+  .hero-sub { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; color: var(--text-muted); text-transform: uppercase; margin: 1.5rem 0 2.5rem; }
+  .hero-desc { font-size: 16px; color: var(--text-body); max-width: 480px; line-height: 1.75; margin-bottom: 3rem; }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.6rem; background: var(--gold); color: var(--navy); text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; transition: background 0.2s, transform 0.15s; }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.6rem; background: transparent; color: var(--ivory); text-decoration: none; font-size: 13px; letter-spacing: 0.04em; border: 0.5px solid var(--border); transition: border-color 0.2s, color 0.2s; }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-right { display: flex; align-items: center; justify-content: center; padding: 8rem 3rem 4rem 1rem; position: relative; z-index: 1; }
+  .timeline-widget { width: 100%; max-width: 380px; }
+  .timeline-header { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 0.5px solid var(--border); }
+  .timeline-items { position: relative; }
+  .timeline-items::before { content: ''; position: absolute; left: 6px; top: 0; bottom: 0; width: 0.5px; background: var(--border); }
+  .tl-item { display: grid; grid-template-columns: 28px 1fr; gap: 0.75rem; margin-bottom: 1.5rem; opacity: 0; transform: translateY(8px); animation: fadeUp 0.5s ease forwards; }
+  .tl-item:nth-child(1) { animation-delay: 0.2s; }
+  .tl-item:nth-child(2) { animation-delay: 0.4s; }
+  .tl-item:nth-child(3) { animation-delay: 0.6s; }
+  .tl-item:nth-child(4) { animation-delay: 0.8s; }
+  .tl-item:nth-child(5) { animation-delay: 1.0s; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .tl-dot { width: 13px; height: 13px; border-radius: 50%; border: 1.5px solid var(--accent); background: var(--navy); margin-top: 3px; position: relative; z-index: 1; }
+  .tl-dot.gold { border-color: var(--gold); background: var(--gold); }
+  .tl-year { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.06em; display: block; margin-bottom: 2px; }
+  .tl-title { font-size: 13px; font-weight: 500; color: var(--ivory); line-height: 1.35; margin-bottom: 2px; }
+  .tl-journal { font-size: 11px; color: var(--text-muted); font-style: italic; }
+
+  .stats-bar { border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat-cell { padding: 2rem 2.5rem; border-right: 0.5px solid var(--border); text-align: center; }
+  .stat-cell:last-child { border-right: none; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 600; color: var(--ivory); display: block; line-height: 1; margin-bottom: 0.3rem; }
+  .stat-num span { font-size: 1.4rem; color: var(--gold); }
+  .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: var(--text-muted); text-transform: uppercase; }
+
+  section { padding: 6rem 0; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
+  .section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+  .section-label::after { content: ''; flex: 1; height: 0.5px; background: var(--border-gold); max-width: 120px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; color: var(--ivory); line-height: 1.25; margin-bottom: 1rem; }
+  .section-desc { font-size: 15px; color: var(--text-muted); max-width: 600px; line-height: 1.7; }
+
+  /* PEOPLE */
+  .people-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .person-card { border: 0.5px solid var(--border); padding: 2rem 1.75rem; transition: border-color 0.25s; }
+  .person-card:hover { border-color: var(--accent); }
+  .person-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--slate); border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--gold); margin-bottom: 1rem; font-style: italic; }
+  .person-name { font-size: 15px; font-weight: 500; color: var(--ivory); margin-bottom: 0.2rem; }
+  .person-role { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+  .person-affil { font-size: 12px; color: var(--accent); margin-bottom: 0.5rem; }
+  .person-fields { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+  .person-metrics { display: flex; gap: 1rem; margin-top: 1rem; padding-top: 0.75rem; border-top: 0.5px solid var(--border); }
+  .metric { text-align: center; }
+  .metric-val { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--ivory); display: block; }
+  .metric-lbl { font-size: 10px; color: var(--text-muted); letter-spacing: 0.06em; }
+
+  /* PUBLICATIONS */
+  #publications { background: rgba(28,59,90,0.1); }
+  .pub-tabs { display: flex; gap: 0; margin-bottom: 2rem; border-bottom: 0.5px solid var(--border); }
+  .pub-tab { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); padding: 0.6rem 1.25rem; border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+  .pub-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .pub-list { display: flex; flex-direction: column; border-top: 0.5px solid var(--border); }
+  .pub-item { display: grid; grid-template-columns: 65px 1fr 90px; align-items: start; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 0.5px solid var(--border); }
+  .pub-year { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); letter-spacing: 0.06em; padding-top: 3px; }
+  .pub-title { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 400; color: var(--ivory); margin-bottom: 0.3rem; line-height: 1.4; }
+  .pub-authors { font-size: 12px; color: var(--text-muted); margin-bottom: 0.2rem; }
+  .pub-journal { font-size: 12px; color: var(--accent); font-style: italic; }
+  .pub-badge { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.08em; padding: 3px 8px; border: 0.5px solid var(--border-gold); color: var(--gold); text-transform: uppercase; text-align: center; white-space: nowrap; }
+  .pub-badge.new { border-color: rgba(74,127,165,0.4); color: var(--accent); }
+
+  /* SERVICES */
+  #services { background: rgba(28,59,90,0.15); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); margin-top: 3rem; }
+  .svc-card { background: var(--navy); padding: 2rem 1.75rem; transition: background 0.25s; position: relative; overflow: hidden; }
+  .svc-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s ease; transform-origin: left; }
+  .svc-card:hover::after { transform: scaleX(1); }
+  .svc-card:hover { background: rgba(28,59,90,0.4); }
+  .svc-icon { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 1rem; display: block; }
+  .svc-card h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; color: var(--ivory); margin-bottom: 0.75rem; line-height: 1.3; }
+  .svc-card p { font-size: 13.5px; color: var(--text-muted); line-height: 1.65; }
+
+  /* KEYWORDS */
+  .keywords { margin-top: 3rem; padding-top: 2rem; border-top: 0.5px solid var(--border); display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .kw { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; padding: 4px 10px; border: 0.5px solid var(--border-gold); color: var(--gold); text-transform: uppercase; }
+
+  /* CONTACT */
+  #contact { background: var(--slate); border-top: 0.5px solid var(--border); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; }
+  .contact-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.75rem; }
+  .contact-icon { font-size: 1.1rem; color: var(--gold); margin-top: 2px; flex-shrink: 0; }
+  .contact-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.2rem; }
+  .contact-value { font-size: 14px; color: var(--ivory); }
+  .contact-value a { color: var(--accent); text-decoration: none; }
+  .contact-value a:hover { color: var(--gold); }
+
+  footer { background: #070F18; border-top: 0.5px solid var(--border); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .footer-logo { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.12em; text-transform: uppercase; }
+  .footer-copy { font-size: 12px; color: var(--text-muted); }
+  .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+  .footer-links a { font-size: 12px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--ivory); }
+
+  .scroll-line { position: absolute; bottom: 2rem; left: 3.5rem; display: flex; align-items: center; gap: 0.75rem; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.1em; animation: pulse 2.5s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.9; } }
+  .scroll-line::before { content: ''; width: 1px; height: 40px; background: linear-gradient(to bottom, transparent, var(--text-muted)); }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 7rem 2rem 4rem; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    .people-grid { grid-template-columns: 1fr 1fr; }
+    .pub-item { grid-template-columns: 55px 1fr; }
+    .pub-badge { display: none; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    nav { padding: 0 1.5rem; }
+    .container { padding: 0 1.5rem; }
+  }
+  @media (max-width: 600px) {
+    .people-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#home">ED&P · Research Group</a>
+  <ul class="nav-links">
+    <li><a href="#people">People</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a class="lang-switch" href="gl.html"><svg width="18" height="12" viewBox="0 0 300 200" style="vertical-align:middle;margin-right:4px;border:0.5px solid rgba(255,255,255,0.2)"><rect width="300" height="200" fill="#fff"/><polygon points="0,0 90,0 300,200 210,200" fill="#2D9CDB"/></svg>GL</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Research Group</p>
+    <h1 class="hero-title">Economic<br><em>Dynamics</em><br>&amp; Policy</h1>
+    <p class="hero-sub">economicdynamics&amp;policy_researchgroup</p>
+    <p class="hero-desc">
+      Research areas: growth, productivity, endogenous fertility and efficiency, investment and financial frictions, health policies and welfare. We combine rigorous theory with quantitative methods to inform policy.
+    </p>
+    <div class="hero-ctas">
+      <a href="#publications" class="btn-primary">Publications →</a>
+      <a href="#services" class="btn-secondary">Services &amp; Expertise</a>
+    </div>
+    <div class="scroll-line">Scroll</div>
+  </div>
+  <div class="hero-right">
+    <div class="timeline-widget">
+      <p class="timeline-header">Recent Output — Selected</p>
+      <div class="timeline-items">
+        <div class="tl-item">
+          <div class="tl-dot gold"></div>
+          <div>
+            <span class="tl-year">2025</span>
+            <p class="tl-title">Normalizing VES production functions</p>
+            <p class="tl-journal">Economics Letters</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div>
+            <span class="tl-year">2025</span>
+            <p class="tl-title">TFP and Global Growth: Cross-country Income Inequality, 1960–2019</p>
+            <p class="tl-journal">Economic Analysis and Policy</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div>
+            <span class="tl-year">2025</span>
+            <p class="tl-title">Caregiver and General Population Preferences for Dependency-Related Health States</p>
+            <p class="tl-journal">Applied Health Economics and Health Policy</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div>
+            <span class="tl-year">2024</span>
+            <p class="tl-title">Licensing of a new technology by an outside and uninformed licensor</p>
+            <p class="tl-journal">Journal of Economics</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div>
+            <span class="tl-year">2023</span>
+            <p class="tl-title">Efficiency with endogenous population growth</p>
+            <p class="tl-journal">Theoretical Economics</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-cell">
+    <span class="stat-num">3</span>
+    <span class="stat-label">Researchers</span>
+  </div>
+  <div class="stat-cell">
+    <span class="stat-num">986<span>+</span></span>
+    <span class="stat-label">Total Citations</span>
+  </div>
+  <div class="stat-cell">
+    <span class="stat-num">12</span>
+    <span class="stat-label">Max h-index</span>
+  </div>
+  <div class="stat-cell">
+    <span class="stat-num">USC</span>
+    <span class="stat-label">Affiliation</span>
+  </div>
+</div>
+
+<!-- PEOPLE -->
+<section id="people">
+  <div class="container">
+    <p class="section-label">Team</p>
+    <h2 class="section-title">Group Members</h2>
+    <p class="section-desc">Faculty researchers at the University of Santiago de Compostela working on economic dynamics, growth, and policy.</p>
+
+    <div class="people-grid">
+      <div class="person-card">
+        <div class="person-avatar">FdR</div>
+        <p class="person-name">Fernando del Río Iglesias</p>
+        <p class="person-role">Researcher</p>
+        <p class="person-affil">University of Santiago de Compostela · <a href="mailto:fernando.delrio@usc.es" style="color:var(--accent);text-decoration:none;">fernando.delrio@usc.es</a></p>
+        <p class="person-fields">Macroeconomics · Economic growth · Productivity · Income distribution · Business cycle accounting</p>
+        <div class="person-metrics">
+          <div class="metric"><span class="metric-val">764</span><span class="metric-lbl">Citations</span></div>
+          <div class="metric"><span class="metric-val">12</span><span class="metric-lbl">h-index</span></div>
+          <div class="metric"><span class="metric-val">15</span><span class="metric-lbl">i10-index</span></div>
+        </div>
+      </div>
+      <div class="person-card">
+        <div class="person-avatar">AS</div>
+        <p class="person-name">Antonio Sampayo</p>
+        <p class="person-role">Researcher</p>
+        <p class="person-affil">University of Santiago de Compostela · <a href="mailto:ar.sampayo@usc.es" style="color:var(--accent);text-decoration:none;">ar.sampayo@usc.es</a></p>
+        <p class="person-fields">Technology licensing · Health economics · Dependency · Durable goods · Productivity</p>
+        <div class="person-metrics">
+          <div class="metric"><span class="metric-val">129</span><span class="metric-lbl">Citations</span></div>
+          <div class="metric"><span class="metric-val">6</span><span class="metric-lbl">h-index</span></div>
+          <div class="metric"><span class="metric-val">6</span><span class="metric-lbl">i10-index</span></div>
+        </div>
+      </div>
+      <div class="person-card">
+        <div class="person-avatar">MP</div>
+        <p class="person-name">Mikel Pérez-Nievas</p>
+        <p class="person-role">Researcher</p>
+        <p class="person-affil">University of Santiago de Compostela · <a href="mailto:miguel.perez-nievas@usc.es" style="color:var(--accent);text-decoration:none;">miguel.perez-nievas@usc.es</a></p>
+        <p class="person-fields">Microeconomics · Endogenous fertility · Social choice · Efficiency · Information economics</p>
+        <div class="person-metrics">
+          <div class="metric"><span class="metric-val">93</span><span class="metric-lbl">Citations</span></div>
+          <div class="metric"><span class="metric-val">5</span><span class="metric-lbl">h-index</span></div>
+          <div class="metric"><span class="metric-val">1</span><span class="metric-lbl">i10-index</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="container">
+    <p class="section-label">Output</p>
+    <h2 class="section-title">Publications</h2>
+    <p class="section-desc">Peer-reviewed work sorted by date. Covers growth accounting, productivity, health economics, technology licensing, and endogenous fertility.</p>
+
+    <div class="pub-list" style="margin-top:3rem;">
+
+      <div class="pub-item">
+        <div class="pub-year">2025</div>
+        <div>
+          <p class="pub-title">Normalizing VES production functions: extending the supply-side system approach</p>
+          <p class="pub-authors">F. del Río, F. Rebelo</p>
+          <p class="pub-journal">Economics Letters</p>
+        </div>
+        <span class="pub-badge new">New</span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2025</div>
+        <div>
+          <p class="pub-title">TFP and global growth: Shaping cross-country income inequality, 1960–2019</p>
+          <p class="pub-authors">F. del Río, F.X. Lores</p>
+          <p class="pub-journal">Economic Analysis and Policy</p>
+        </div>
+        <span class="pub-badge new">New</span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2025</div>
+        <div>
+          <p class="pub-title">OECD labour share trends: Factor efficiency vs. market distortions in a neoclassical framework</p>
+          <p class="pub-authors">F. del Río, F. Rebelo</p>
+          <p class="pub-journal">Economic Analysis and Policy</p>
+        </div>
+        <span class="pub-badge new">New</span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2025</div>
+        <div>
+          <p class="pub-title">Authors' Reply: Comparison of Caregiver and General Population Preferences for Dependency-Related Health States</p>
+          <p class="pub-authors">E. Rodríguez-Míguez, A. Sampayo</p>
+          <p class="pub-journal">Applied Health Economics and Health Policy 23(5), 933–934</p>
+        </div>
+        <span class="pub-badge new">New</span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2025</div>
+        <div>
+          <p class="pub-title">Comparison of Caregiver and General Population Preferences for Dependency-Related Health States</p>
+          <p class="pub-authors">E. Rodríguez-Míguez, A. Sampayo</p>
+          <p class="pub-journal">Applied Health Economics and Health Policy 23(1), 105–117</p>
+        </div>
+        <span class="pub-badge new">New</span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2024</div>
+        <div>
+          <p class="pub-title">Licensing of a new technology by an outside and uninformed licensor</p>
+          <p class="pub-authors">M. Antelo, A. Sampayo</p>
+          <p class="pub-journal">Journal of Economics 142(2), 111–162</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2023</div>
+        <div>
+          <p class="pub-title">Accounting for the role of investment frictions in recessions</p>
+          <p class="pub-authors">F. del Río, F.X. Lores</p>
+          <p class="pub-journal">Economica 90(360), 1089–1118</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2023</div>
+        <div>
+          <p class="pub-title">Accounting for Spanish economic development 1850–2019</p>
+          <p class="pub-authors">F. del Río, F.X. Lores</p>
+          <p class="pub-journal">Economic Modelling 121, 106200</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2023</div>
+        <div>
+          <p class="pub-title">Efficiency with endogenous population growth: Do children have too many rights?</p>
+          <p class="pub-authors">M. Pérez-Nievas</p>
+          <p class="pub-journal">Theoretical Economics 18(4), 1375–1406</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2021</div>
+        <div>
+          <p class="pub-title">Accounting for US economic growth 1954–2017</p>
+          <p class="pub-authors">F. del Río, F.X. Lores</p>
+          <p class="pub-journal">Economic Modelling 101, 105529</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2021</div>
+        <div>
+          <p class="pub-title">The impact of rent seeking on social infrastructure and productivity</p>
+          <p class="pub-authors">F. del Río</p>
+          <p class="pub-journal">Review of Development Economics 25(3), 1741–1760</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2019</div>
+        <div>
+          <p class="pub-title">Efficiency and endogenous fertility</p>
+          <p class="pub-authors">M. Pérez-Nievas, J.I. Conde-Ruiz, E.L. Giménez</p>
+          <p class="pub-journal">Theoretical Economics 14(2), 475–512</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2019</div>
+        <div>
+          <p class="pub-title">The decline in capital efficiency and labour share</p>
+          <p class="pub-authors">F. del Río, F.X. Lores</p>
+          <p class="pub-journal">Economica 86(344), 635–662</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2018</div>
+        <div>
+          <p class="pub-title">Property rights, predation, and productivity</p>
+          <p class="pub-authors">F. del Río, F.X. Lores</p>
+          <p class="pub-journal">The Scandinavian Journal of Economics</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2017</div>
+        <div>
+          <p class="pub-title">Regulation and rent-seeking: The role of the distribution of political and economic power</p>
+          <p class="pub-authors">F. del Río, F.X. Lores</p>
+          <p class="pub-journal">Journal of Public Economic Theory 19(5), 986–1008</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2017</div>
+        <div>
+          <p class="pub-title">On the number of licenses with signalling</p>
+          <p class="pub-authors">M. Antelo, A. Sampayo</p>
+          <p class="pub-journal">The Manchester School 85(6), 635–660</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2017</div>
+        <div>
+          <p class="pub-title">Complementarity, linkages between firms, and the effect of entry costs on productivity</p>
+          <p class="pub-authors">F. del Río, A. Sampayo</p>
+          <p class="pub-journal">Review of Development Economics 21(4), 1281–1304</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2016</div>
+        <div>
+          <p class="pub-title">The DEP-6D, a new preference-based measure to assess health states of dependency</p>
+          <p class="pub-authors">E. Rodríguez-Míguez, J.M. Abellán-Perpiñán, X.C. Álvarez, X.M. González, A. Sampayo et al.</p>
+          <p class="pub-journal">Social Science &amp; Medicine 153, 210–219</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2014</div>
+        <div>
+          <p class="pub-title">Obsolescence and productivity</p>
+          <p class="pub-authors">F. del Río, A. Sampayo</p>
+          <p class="pub-journal">Portuguese Economic Journal 13(3), 195–216</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2010</div>
+        <div>
+          <p class="pub-title">Millian efficiency with endogenous fertility</p>
+          <p class="pub-authors">J.I. Conde-Ruiz, E.L. Giménez, M. Pérez-Nievas</p>
+          <p class="pub-journal">The Review of Economic Studies 77(1), 154–187</p>
+        </div>
+        <span class="pub-badge">Top 5</span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2008</div>
+        <div>
+          <p class="pub-title">A vintage model of trade in secondhand markets and the lifetime of durable goods</p>
+          <p class="pub-authors">O. Licandro, L.A. Puch, A. Sampayo</p>
+          <p class="pub-journal">Mathematical Population Studies 15(4), 249–266</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2006</div>
+        <div>
+          <p class="pub-title">The effects of replacement schemes on car sales: The Spanish case</p>
+          <p class="pub-authors">O. Licandro, A. Sampayo</p>
+          <p class="pub-journal">Investigaciones Económicas 30(2), 239–282</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <p class="section-label">Services &amp; Expertise</p>
+    <h2 class="section-title">What We Offer</h2>
+    <p class="section-desc">Beyond academic research, the group provides analytical and advisory services to public institutions, regional governments, and policy bodies.</p>
+
+    <div class="services-grid">
+      <div class="svc-card">
+        <span class="svc-icon">[01]</span>
+        <h3>Macroeconomic Scenario Forecasting</h3>
+        <p>Projections for public budget planning in institutions, combining structural models with empirical calibration to regional and national contexts.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">[02]</span>
+        <h3>Welfare &amp; Distributional Analysis of Health and Social Policies</h3>
+        <p>Quantitative assessment of the distributional and welfare effects of health care reform, social services, and natality support programmes.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">[03]</span>
+        <h3>Impact Assessment of Productivity-Enhancing Policies</h3>
+        <p>Analysis of how R&amp;D support, innovation incentives, and investment promotion translate into aggregate productivity and long-run growth.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">[04]</span>
+        <h3>Effects of Financial Regulation on Business Investment</h3>
+        <p>Study of how financial regulation affects firm investment decisions and macroeconomic outcomes, drawing on models of financial frictions and heterogeneous firms.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">[05]</span>
+        <h3>Policy Design Advisory</h3>
+        <p>Evidence-based advice on natality policies, social service reform, and R&amp;D promotion, integrating welfare-theoretic analysis with institutional context.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">[06]</span>
+        <h3>Applied Quantitative Methods</h3>
+        <p>Growth and business cycle accounting, input-output analysis, DEA efficiency measurement — applied to firms, regions, hospitals, and public institutions.</p>
+      </div>
+    </div>
+
+    <div class="keywords">
+      <span class="kw">Dynamic economics</span>
+      <span class="kw">Growth</span>
+      <span class="kw">Productivity</span>
+      <span class="kw">Investment</span>
+      <span class="kw">Financial frictions</span>
+      <span class="kw">Business cycles</span>
+      <span class="kw">Efficiency</span>
+      <span class="kw">Endogenous fertility</span>
+      <span class="kw">Health and welfare</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Contact</p>
+    <h2 class="section-title">Get in Touch</h2>
+    <p class="section-desc">We welcome inquiries from prospective students, visiting scholars, and collaborative partners.</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-item">
+          <span class="contact-icon">◈</span>
+          <div>
+            <p class="contact-label">Affiliation</p>
+            <p class="contact-value">University of Santiago de Compostela<br>School of Economics and Business</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">◈</span>
+          <div>
+            <p class="contact-label">Contact</p>
+            <p class="contact-value"><a href="mailto:ar.sampayo@usc.es">ar.sampayo@usc.es</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">◈</span>
+          <div>
+            <p class="contact-label">GitHub</p>
+            <p class="contact-value"><a href="https://github.com/economicdynamics-policy-researchgroup">github.com/economicdynamics-policy</a></p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="contact-item">
+          <span class="contact-icon">◈</span>
+          <div>
+            <p class="contact-label">Google Scholar Profiles</p>
+            <p class="contact-value">
+              <a href="https://scholar.google.com/citations?user=nPSRBv4AAAAJ" target="_blank">Antonio Sampayo</a><br>
+              <a href="https://scholar.google.com/citations?user=JO4cCMkAAAAJ" target="_blank">Fernando del Río Iglesias</a><br>
+              <a href="https://scholar.google.com/citations?user=Kx5Re7sAAAAJ" target="_blank">Mikel Pérez-Nievas</a>
+            </p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">◈</span>
+          <div>
+            <p class="contact-label">Collaborating Institutions</p>
+            <p class="contact-value">Universidad de Vigo · Universidad Complutense de Madrid · AMSE · University of Leicester</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">economicdynamics&amp;policy_researchgroup</span>
+  <ul class="footer-links">
+    <li><a href="#people">People</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="gl.html" style="color:var(--gold);"><svg width="18" height="12" viewBox="0 0 300 200" style="vertical-align:middle;margin-right:4px;border:0.5px solid rgba(255,255,255,0.2)"><rect width="300" height="200" fill="#fff"/><polygon points="0,0 90,0 300,200 210,200" fill="#2D9CDB"/></svg>GL</a></li>
+  </ul>
+  <span class="footer-copy">© 2025 ED&P Research Group · USC</span>
+</footer>
+
+</body>
+</html>
