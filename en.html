@@ -9,33 +9,33 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #0D1B2A;
-    --slate: #1C3B5A;
-    --accent: #4A7FA5;
-    --gold: #C4A35A;
-    --gold-light: #D4B87A;
-    --ivory: #F5F0E8;
-    --text-muted: #8A9BB0;
-    --text-body: #C8D5E0;
-    --border: rgba(74,127,165,0.2);
-    --border-gold: rgba(196,163,90,0.3);
+    --navy: #FFFFFF;
+    --slate: #F0F2F5;
+    --accent: #00529B;
+    --gold: #8B6914;
+    --gold-light: #6B4F10;
+    --ivory: #1A1A2E;
+    --text-muted: #6C757D;
+    --text-body: #374151;
+    --border: rgba(0,0,0,0.1);
+    --border-gold: rgba(139,105,20,0.2);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { background: var(--navy); color: var(--text-body); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+  body { background: var(--navy); color: var(--text-body); font-family: 'Inter', sans-serif; font-size: 18px; line-height: 1.7; overflow-x: hidden; }
 
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(13,27,42,0.92); backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); box-shadow: 0 1px 3px rgba(0,0,0,0.06);
     border-bottom: 0.5px solid var(--border);
     padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 60px;
   }
-  .nav-logo { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; text-decoration: none; }
+  .nav-logo { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; text-decoration: none; }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { text-decoration: none; font-size: 13px; color: var(--text-muted); letter-spacing: 0.04em; transition: color 0.2s; }
+  .nav-links a { text-decoration: none; font-size: 15px; color: var(--text-muted); letter-spacing: 0.04em; transition: color 0.2s; }
   .nav-links a:hover { color: var(--ivory); }
-  .lang-switch { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; padding: 3px 8px; border: 0.5px solid var(--border-gold); color: var(--gold); text-decoration: none; text-transform: uppercase; transition: background 0.2s; }
-  .lang-switch:hover { background: rgba(196,163,90,0.1); }
+  .lang-switch { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; padding: 3px 8px; border: 0.5px solid var(--border-gold); color: var(--gold); text-decoration: none; text-transform: uppercase; transition: background 0.2s; }
+  .lang-switch:hover { background: rgba(139,105,20,0.06); }
 
   .hero {
     min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
@@ -43,26 +43,25 @@
   }
   .hero::before {
     content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(74,127,165,0.06) 0%, transparent 70%),
-                radial-gradient(ellipse 40% 60% at 20% 80%, rgba(196,163,90,0.04) 0%, transparent 60%);
+    background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(0,82,155,0.03) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 60% at 20% 80%, rgba(139,105,20,0.02) 0%, transparent 60%);
     pointer-events: none;
   }
   .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 8rem 3.5rem 4rem; position: relative; z-index: 1; }
-  .hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+  .hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
   .hero-eyebrow::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--gold); }
   .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 400; line-height: 1.12; color: var(--ivory); margin-bottom: 0.4rem; }
-  .hero-title em { font-style: italic; color: var(--gold-light); }
-  .hero-sub { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; color: var(--text-muted); text-transform: uppercase; margin: 1.5rem 0 2.5rem; }
-  .hero-desc { font-size: 16px; color: var(--text-body); max-width: 480px; line-height: 1.75; margin-bottom: 3rem; }
+  .hero-sub { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.14em; color: var(--text-muted); text-transform: uppercase; margin: 1.5rem 0 2.5rem; }
+  .hero-desc { font-size: 18px; color: var(--text-body); max-width: 480px; line-height: 1.75; margin-bottom: 3rem; }
   .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.6rem; background: var(--gold); color: var(--navy); text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; transition: background 0.2s, transform 0.15s; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.6rem; background: var(--gold); color: var(--navy); text-decoration: none; font-size: 15px; font-weight: 600; letter-spacing: 0.04em; transition: background 0.2s, transform 0.15s; }
   .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
-  .btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.6rem; background: transparent; color: var(--ivory); text-decoration: none; font-size: 13px; letter-spacing: 0.04em; border: 0.5px solid var(--border); transition: border-color 0.2s, color 0.2s; }
+  .btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.6rem; background: transparent; color: var(--ivory); text-decoration: none; font-size: 15px; letter-spacing: 0.04em; border: 0.5px solid var(--border); transition: border-color 0.2s, color 0.2s; }
   .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
   .hero-right { display: flex; align-items: center; justify-content: center; padding: 8rem 3rem 4rem 1rem; position: relative; z-index: 1; }
   .timeline-widget { width: 100%; max-width: 380px; }
-  .timeline-header { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 0.5px solid var(--border); }
+  .timeline-header { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.14em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 0.5px solid var(--border); }
   .timeline-items { position: relative; }
   .timeline-items::before { content: ''; position: absolute; left: 6px; top: 0; bottom: 0; width: 0.5px; background: var(--border); }
   .tl-item { display: grid; grid-template-columns: 28px 1fr; gap: 0.75rem; margin-bottom: 1.5rem; opacity: 0; transform: translateY(8px); animation: fadeUp 0.5s ease forwards; }
@@ -74,87 +73,87 @@
   @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
   .tl-dot { width: 13px; height: 13px; border-radius: 50%; border: 1.5px solid var(--accent); background: var(--navy); margin-top: 3px; position: relative; z-index: 1; }
   .tl-dot.gold { border-color: var(--gold); background: var(--gold); }
-  .tl-year { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.06em; display: block; margin-bottom: 2px; }
-  .tl-title { font-size: 13px; font-weight: 500; color: var(--ivory); line-height: 1.35; margin-bottom: 2px; }
-  .tl-journal { font-size: 11px; color: var(--text-muted); font-style: italic; }
+  .tl-year { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--gold); letter-spacing: 0.06em; display: block; margin-bottom: 2px; }
+  .tl-title { font-size: 15px; font-weight: 500; color: var(--ivory); line-height: 1.35; margin-bottom: 2px; }
+  .tl-journal { font-size: 13px; color: var(--text-muted); font-style: italic; }
 
   .stats-bar { border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); display: grid; grid-template-columns: repeat(4, 1fr); }
   .stat-cell { padding: 2rem 2.5rem; border-right: 0.5px solid var(--border); text-align: center; }
   .stat-cell:last-child { border-right: none; }
   .stat-num { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 600; color: var(--ivory); display: block; line-height: 1; margin-bottom: 0.3rem; }
   .stat-num span { font-size: 1.4rem; color: var(--gold); }
-  .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: var(--text-muted); text-transform: uppercase; }
+  .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: var(--text-muted); text-transform: uppercase; }
 
   section { padding: 6rem 0; }
   .container { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
-  .section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+  .section-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
   .section-label::after { content: ''; flex: 1; height: 0.5px; background: var(--border-gold); max-width: 120px; }
   .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; color: var(--ivory); line-height: 1.25; margin-bottom: 1rem; }
-  .section-desc { font-size: 15px; color: var(--text-muted); max-width: 600px; line-height: 1.7; }
+  .section-desc { font-size: 17px; color: var(--text-muted); max-width: 600px; line-height: 1.7; }
 
   /* PEOPLE */
-  .people-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .people-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
   .person-card { border: 0.5px solid var(--border); padding: 2rem 1.75rem; transition: border-color 0.25s; }
   .person-card:hover { border-color: var(--accent); }
-  .person-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--slate); border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--gold); margin-bottom: 1rem; font-style: italic; }
-  .person-name { font-size: 15px; font-weight: 500; color: var(--ivory); margin-bottom: 0.2rem; }
-  .person-role { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 0.4rem; }
-  .person-affil { font-size: 12px; color: var(--accent); margin-bottom: 0.5rem; }
-  .person-fields { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+  .person-photo { width: 260px; height: 260px; border-radius: 50%; object-fit: cover; object-position: center top; border: 1.5px solid var(--border); margin-bottom: 1rem; display: block; background: var(--slate); }
+  .person-name { font-size: 17px; font-weight: 500; color: var(--ivory); margin-bottom: 0.2rem; }
+  .person-role { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+  .person-affil { font-size: 14px; color: var(--accent); margin-bottom: 0.5rem; }
+  .person-fields { font-size: 14px; color: var(--text-muted); line-height: 1.55; }
   .person-metrics { display: flex; gap: 1rem; margin-top: 1rem; padding-top: 0.75rem; border-top: 0.5px solid var(--border); }
   .metric { text-align: center; }
-  .metric-val { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--ivory); display: block; }
-  .metric-lbl { font-size: 10px; color: var(--text-muted); letter-spacing: 0.06em; }
+  .metric-val { font-family: 'JetBrains Mono', monospace; font-size: 15px; color: var(--ivory); display: block; }
+  .metric-lbl { font-size: 12px; color: var(--text-muted); letter-spacing: 0.06em; }
 
   /* PUBLICATIONS */
-  #publications { background: rgba(28,59,90,0.1); }
+  #publications { background: rgba(0,0,0,0.02); }
   .pub-tabs { display: flex; gap: 0; margin-bottom: 2rem; border-bottom: 0.5px solid var(--border); }
-  .pub-tab { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); padding: 0.6rem 1.25rem; border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+  .pub-tab { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); padding: 0.6rem 1.25rem; border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
   .pub-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
   .pub-list { display: flex; flex-direction: column; border-top: 0.5px solid var(--border); }
   .pub-item { display: grid; grid-template-columns: 65px 1fr 90px; align-items: start; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 0.5px solid var(--border); }
-  .pub-year { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); letter-spacing: 0.06em; padding-top: 3px; }
-  .pub-title { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 400; color: var(--ivory); margin-bottom: 0.3rem; line-height: 1.4; }
-  .pub-authors { font-size: 12px; color: var(--text-muted); margin-bottom: 0.2rem; }
-  .pub-journal { font-size: 12px; color: var(--accent); font-style: italic; }
-  .pub-badge { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.08em; padding: 3px 8px; border: 0.5px solid var(--border-gold); color: var(--gold); text-transform: uppercase; text-align: center; white-space: nowrap; }
-  .pub-badge.new { border-color: rgba(74,127,165,0.4); color: var(--accent); }
+  .pub-year { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--gold); letter-spacing: 0.06em; padding-top: 3px; }
+  .pub-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 400; color: var(--ivory); margin-bottom: 0.3rem; line-height: 1.4; }
+  .pub-authors { font-size: 14px; color: var(--text-muted); margin-bottom: 0.2rem; }
+  .pub-journal { font-size: 14px; color: var(--accent); font-style: italic; }
+  .pub-badge { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; padding: 3px 8px; border: 0.5px solid var(--border-gold); color: var(--gold); text-transform: uppercase; text-align: center; white-space: nowrap; }
+  .pub-badge.new { border-color: rgba(0,82,155,0.15); color: var(--accent); }
 
   /* SERVICES */
-  #services { background: rgba(28,59,90,0.15); }
-  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); margin-top: 3rem; }
-  .svc-card { background: var(--navy); padding: 2rem 1.75rem; transition: background 0.25s; position: relative; overflow: hidden; }
+  #services { background: rgba(0,0,0,0.025); }
+  .services-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1px; background: var(--border); border: 0.5px solid var(--border); margin-top: 3rem; }
+  .svc-card { background: var(--navy); padding: 2rem 1.75rem; transition: background 0.25s; position: relative; overflow: hidden; flex: 0 0 calc(33.333% - 1px); min-width: 250px; }
   .svc-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s ease; transform-origin: left; }
   .svc-card:hover::after { transform: scaleX(1); }
-  .svc-card:hover { background: rgba(28,59,90,0.4); }
-  .svc-icon { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 1rem; display: block; }
-  .svc-card h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 400; color: var(--ivory); margin-bottom: 0.75rem; line-height: 1.3; }
-  .svc-card p { font-size: 13.5px; color: var(--text-muted); line-height: 1.65; }
+  .svc-card:hover { background: rgba(0,82,155,0.04); }
+  .svc-icon { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 1rem; display: block; }
+  .svc-card h3 { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 400; color: var(--ivory); margin-bottom: 0.75rem; line-height: 1.3; }
+  .svc-card p { font-size: 15.5px; color: var(--text-muted); line-height: 1.65; }
 
   /* KEYWORDS */
   .keywords { margin-top: 3rem; padding-top: 2rem; border-top: 0.5px solid var(--border); display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .kw { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; padding: 4px 10px; border: 0.5px solid var(--border-gold); color: var(--gold); text-transform: uppercase; }
+  .kw { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; padding: 4px 10px; border: 0.5px solid var(--border-gold); color: var(--gold); text-transform: uppercase; }
 
   /* CONTACT */
   #contact { background: var(--slate); border-top: 0.5px solid var(--border); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; }
   .contact-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.75rem; }
   .contact-icon { font-size: 1.1rem; color: var(--gold); margin-top: 2px; flex-shrink: 0; }
-  .contact-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.2rem; }
-  .contact-value { font-size: 14px; color: var(--ivory); }
+  .contact-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.2rem; }
+  .contact-value { font-size: 16px; color: var(--ivory); }
   .contact-value a { color: var(--accent); text-decoration: none; }
   .contact-value a:hover { color: var(--gold); }
 
-  footer { background: #070F18; border-top: 0.5px solid var(--border); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
-  .footer-logo { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.12em; text-transform: uppercase; }
-  .footer-copy { font-size: 12px; color: var(--text-muted); }
+  footer { background: #1A2332; border-top: 0.5px solid var(--border); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .footer-logo { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8A9BB0; letter-spacing: 0.12em; text-transform: uppercase; }
+  .footer-copy { font-size: 14px; color: #8A9BB0; }
   .footer-links { display: flex; gap: 1.5rem; list-style: none; }
-  .footer-links a { font-size: 12px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--ivory); }
+  .footer-links a { font-size: 14px; color: #8A9BB0; text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: #FFFFFF; }
 
-  .scroll-line { position: absolute; bottom: 2rem; left: 3.5rem; display: flex; align-items: center; gap: 0.75rem; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.1em; animation: pulse 2.5s ease-in-out infinite; }
+  .scroll-line { position: absolute; bottom: 2rem; left: 3.5rem; display: flex; align-items: center; gap: 0.75rem; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted); letter-spacing: 0.1em; animation: pulse 2.5s ease-in-out infinite; }
   @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.9; } }
-  .scroll-line::before { content: ''; width: 1px; height: 40px; background: linear-gradient(to bottom, transparent, var(--text-muted)); }
+  .scroll-line::before { content: ''; width: 1px; height: 40px; background: linear-gradient(to bottom, transparent, #6C757D); }
 
   @media (max-width: 900px) {
     .hero { grid-template-columns: 1fr; }
@@ -164,14 +163,16 @@
     .people-grid { grid-template-columns: 1fr 1fr; }
     .pub-item { grid-template-columns: 55px 1fr; }
     .pub-badge { display: none; }
-    .services-grid { grid-template-columns: 1fr 1fr; }
+    .services-grid { justify-content: center; }
+    .svc-card { flex: 0 0 calc(50% - 1px); }
     .contact-grid { grid-template-columns: 1fr; }
     nav { padding: 0 1.5rem; }
     .container { padding: 0 1.5rem; }
   }
   @media (max-width: 600px) {
     .people-grid { grid-template-columns: 1fr; }
-    .services-grid { grid-template-columns: 1fr; }
+    .services-grid { flex-direction: column; }
+    .svc-card { flex: 1 1 100%; }
     .stats-bar { grid-template-columns: 1fr 1fr; }
   }
 </style>
@@ -185,7 +186,7 @@
     <li><a href="#publications">Publications</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a class="lang-switch" href="gl.html"><svg width="18" height="12" viewBox="0 0 300 200" style="vertical-align:middle;margin-right:4px;border:0.5px solid rgba(255,255,255,0.2)"><rect width="300" height="200" fill="#fff"/><polygon points="0,0 90,0 300,200 210,200" fill="#2D9CDB"/></svg>GL</a></li>
+    <li><a class="lang-switch" href="gl.html"><svg width="18" height="12" viewBox="0 0 300 200" style="vertical-align:middle;margin-right:4px;border:0.5px solid rgba(0,0,0,0.15)"><rect width="300" height="200" fill="#fff"/><polygon points="0,0 90,0 300,200 210,200" fill="#2D9CDB"/></svg>GL</a></li>
     <li><a class="lang-switch" href="index.html" title="Home">⌂</a></li>
   </ul>
 </nav>
@@ -194,10 +195,10 @@
 <section id="home" class="hero">
   <div class="hero-left">
     <p class="hero-eyebrow">Research Group</p>
-    <h1 class="hero-title">Economic<br><em>Dynamics</em><br>&amp; Policy</h1>
+    <h1 class="hero-title">Economic<br>Dynamics<br>&amp; Policy</h1>
     <p class="hero-sub">economicdynamics&amp;policy_researchgroup</p>
     <p class="hero-desc">
-      Research areas: growth, productivity, endogenous fertility and efficiency, investment and financial frictions, health policies and welfare. Combining rigorous theory with quantitative methods to inform policy.
+      Research areas: growth, productivity, endogenous fertility and efficiency, investment and financial frictions, health policies and welfare. We combine rigorous theory with quantitative methods to inform policy.
     </p>
     <div class="hero-ctas">
       <a href="#publications" class="btn-primary">Publications →</a>
@@ -257,11 +258,11 @@
 <!-- STATS -->
 <div class="stats-bar">
   <div class="stat-cell">
-    <span class="stat-num">3</span>
+    <span class="stat-num">4</span>
     <span class="stat-label">Researchers</span>
   </div>
   <div class="stat-cell">
-    <span class="stat-num">986<span>+</span></span>
+    <span class="stat-num">1146<span>+</span></span>
     <span class="stat-label">Total Citations</span>
   </div>
   <div class="stat-cell">
@@ -283,8 +284,8 @@
 
     <div class="people-grid">
       <div class="person-card">
-        <div class="person-avatar">FdR</div>
-        <p class="person-name">Fernando del Río Iglesias</p>
+        <img class="person-photo" src="fernando-del-rio.jpg" alt="Fernando del Río">
+        <p class="person-name">Fernando del Río</p>
         <p class="person-role">Researcher</p>
         <p class="person-affil">University of Santiago de Compostela · <a href="mailto:fernando.delrio@usc.es" style="color:var(--accent);text-decoration:none;">fernando.delrio@usc.es</a></p>
         <p class="person-fields">Macroeconomics · Economic growth · Productivity · Income distribution · Business cycle accounting</p>
@@ -295,10 +296,10 @@
         </div>
       </div>
       <div class="person-card">
-        <div class="person-avatar">AS</div>
+        <img class="person-photo" src="Antonio-rodriguez-sampayo.jpg" alt="Antonio Sampayo">
         <p class="person-name">Antonio Sampayo</p>
         <p class="person-role">Researcher</p>
-        <p class="person-affil">University of Santiago de Compostela · <a href="mailto:ar.sampayo@usc.es" style="color:var(--accent);text-decoration:none;">ar.sampayo@usc.es</a></p>
+        <p class="person-affil">University of Santiago de Compostela · <a href="mailto:ar.sampayo@usc.es" style="color:var(--accent);text-decoration:none;">ar.sampayo@usc.es</a> · <a href="https://arsampayo.github.io/sampayo-website/sampayo.html" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;">personal web</a></p>
         <p class="person-fields">Technology licensing · Health economics · Dependency · Durable goods · Productivity</p>
         <div class="person-metrics">
           <div class="metric"><span class="metric-val">129</span><span class="metric-lbl">Citations</span></div>
@@ -307,7 +308,7 @@
         </div>
       </div>
       <div class="person-card">
-        <div class="person-avatar">MP</div>
+        <img class="person-photo" src="PerezNievas.jpg" alt="Mikel Pérez-Nievas">
         <p class="person-name">Mikel Pérez-Nievas</p>
         <p class="person-role">Researcher</p>
         <p class="person-affil">University of Santiago de Compostela · <a href="mailto:miguel.perez-nievas@usc.es" style="color:var(--accent);text-decoration:none;">miguel.perez-nievas@usc.es</a></p>
@@ -316,6 +317,18 @@
           <div class="metric"><span class="metric-val">93</span><span class="metric-lbl">Citations</span></div>
           <div class="metric"><span class="metric-val">5</span><span class="metric-lbl">h-index</span></div>
           <div class="metric"><span class="metric-val">1</span><span class="metric-lbl">i10-index</span></div>
+        </div>
+      </div>
+      <div class="person-card">
+        <img class="person-photo" src="francisco-lores-2.jpg" alt="Francisco Xavier Lores">
+        <p class="person-name">Francisco Xavier Lores</p>
+        <p class="person-role">Researcher</p>
+        <p class="person-affil">University of Santiago de Compostela · <a href="mailto:franciscoxavier.lores@usc.es" style="color:var(--accent);text-decoration:none;">franciscoxavier.lores@usc.es</a></p>
+        <p class="person-fields">Macroeconomics · Economic growth · Business cycles · Business cycle accounting · Investment frictions · Regulation and rent-seeking</p>
+        <div class="person-metrics">
+          <div class="metric"><span class="metric-val">160</span><span class="metric-lbl">Citations</span></div>
+          <div class="metric"><span class="metric-val">7</span><span class="metric-lbl">h-index</span></div>
+          <div class="metric"><span class="metric-val">6</span><span class="metric-lbl">i10-index</span></div>
         </div>
       </div>
     </div>
@@ -576,7 +589,7 @@
       <div class="svc-card">
         <span class="svc-icon">[03]</span>
         <h3>Impact Assessment of Productivity-Enhancing Policies</h3>
-        <p>Growth and business cycle accounting, analysis of how R&amp;D support, innovation incentives, and investment promotion translate into aggregate productivity and long-run growth.</p>
+        <p>Analysis of how R&amp;D support, innovation incentives, and investment promotion translate into aggregate productivity and long-run growth.</p>
       </div>
       <div class="svc-card">
         <span class="svc-icon">[04]</span>
@@ -585,7 +598,7 @@
       </div>
       <div class="svc-card">
         <span class="svc-icon">[05]</span>
-        <h3>Policy Consulting</h3>
+        <h3>Policy Design Advisory</h3>
         <p>Evidence-based advice on natality policies, social service reform, and R&amp;D promotion, integrating welfare-theoretic analysis with institutional context.</p>
       </div>
     </div>
@@ -641,7 +654,7 @@
             <p class="contact-label">Google Scholar Profiles</p>
             <p class="contact-value">
               <a href="https://scholar.google.com/citations?user=nPSRBv4AAAAJ" target="_blank">Antonio Sampayo</a><br>
-              <a href="https://scholar.google.com/citations?user=JO4cCMkAAAAJ" target="_blank">Fernando del Río Iglesias</a><br>
+              <a href="https://scholar.google.com/citations?user=JO4cCMkAAAAJ" target="_blank">Fernando del Río</a><br>
               <a href="https://scholar.google.com/citations?user=Kx5Re7sAAAAJ" target="_blank">Mikel Pérez-Nievas</a>
             </p>
           </div>
@@ -665,7 +678,7 @@
     <li><a href="#publications">Publications</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="gl.html" style="color:var(--gold);"><svg width="18" height="12" viewBox="0 0 300 200" style="vertical-align:middle;margin-right:4px;border:0.5px solid rgba(255,255,255,0.2)"><rect width="300" height="200" fill="#fff"/><polygon points="0,0 90,0 300,200 210,200" fill="#2D9CDB"/></svg>GL</a></li>
+    <li><a href="gl.html" style="color:var(--gold);"><svg width="18" height="12" viewBox="0 0 300 200" style="vertical-align:middle;margin-right:4px;border:0.5px solid rgba(0,0,0,0.15)"><rect width="300" height="200" fill="#fff"/><polygon points="0,0 90,0 300,200 210,200" fill="#2D9CDB"/></svg>GL</a></li>
     <li><a href="index.html" style="color:var(--gold);">⌂ Home</a></li>
   </ul>
   <span class="footer-copy">© 2025 ED&P Research Group · USC</span>
