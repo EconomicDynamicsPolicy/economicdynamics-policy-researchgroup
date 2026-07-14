@@ -67,6 +67,8 @@
   .tl-dot.gold { border-color: var(--gold); background: var(--gold); }
   .tl-year { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--gold); letter-spacing: 0.06em; display: block; margin-bottom: 2px; }
   .tl-title { font-size: 15px; font-weight: 500; color: var(--ivory); line-height: 1.35; margin-bottom: 2px; }
+  .tl-title a { color: inherit; text-decoration: none; }
+  .tl-title a:hover { color: var(--gold); }
   .tl-journal { font-size: 13px; color: var(--text-muted); font-style: italic; }
 
   .stats-bar { border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); display: grid; grid-template-columns: repeat(4, 1fr); }
@@ -84,14 +86,15 @@
   .section-desc { font-size: 17px; color: var(--text-muted); max-width: 600px; line-height: 1.7; }
 
   .people-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; transform: translateX(-1.75rem); }
-  .person-card { border: 0.5px solid var(--border); padding: 2rem 1.75rem; transition: border-color 0.25s; }
+  .person-card { border: 0.5px solid var(--border); padding: 2rem 1.75rem; transition: border-color 0.25s; display: flex; flex-direction: column; align-items: center; }
   .person-card:hover { border-color: var(--accent); }
-  .person-photo { width: 100%; max-width: 220px; aspect-ratio: 1; height: auto; border-radius: 50%; object-fit: cover; object-position: center top; border: 1.5px solid var(--border); margin: 0 auto 1rem; display: block; background: var(--slate); }
-  .person-name { font-size: 17px; font-weight: 500; color: var(--ivory); margin-bottom: 0.2rem; }
-  .person-role { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 0.4rem; }
-  .person-affil { font-size: 14px; color: var(--accent); margin-bottom: 0.5rem; }
-  .person-fields { font-size: 14px; color: var(--text-muted); line-height: 1.55; }
-  .person-metrics { display: flex; gap: 1rem; margin-top: 1rem; padding-top: 0.75rem; border-top: 0.5px solid var(--border); }
+  .person-photo { width: 220px; height: 220px; max-width: 220px; flex-shrink: 0; border-radius: 50%; object-fit: cover; object-position: center top; border: 1.5px solid var(--border); margin: 0 auto 1rem; display: block; background: var(--slate); }
+  .person-photo[src="francisco-lores-2.jpg"] { object-position: 58% top; }
+  .person-name { font-size: 17px; font-weight: 500; color: var(--ivory); margin-bottom: 0.2rem; width: 100%; }
+  .person-role { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 0.4rem; width: 100%; }
+  .person-affil { font-size: 14px; color: var(--accent); margin-bottom: 0.5rem; width: 100%; }
+  .person-fields { font-size: 14px; color: var(--text-muted); line-height: 1.55; width: 100%; }
+  .person-metrics { display: flex; gap: 1rem; margin-top: 1rem; padding-top: 0.75rem; border-top: 0.5px solid var(--border); width: 100%; }
   .metric { text-align: center; }
   .metric-val { font-family: 'JetBrains Mono', monospace; font-size: 15px; color: var(--ivory); display: block; }
   .metric-lbl { font-size: 12px; color: var(--text-muted); letter-spacing: 0.06em; }
@@ -101,6 +104,8 @@
   .pub-item { display: grid; grid-template-columns: 65px 1fr 90px; align-items: start; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 0.5px solid var(--border); }
   .pub-year { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--gold); letter-spacing: 0.06em; padding-top: 3px; }
   .pub-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 400; color: var(--ivory); margin-bottom: 0.3rem; line-height: 1.4; }
+  .pub-title a { color: inherit; text-decoration: none; }
+  .pub-title a:hover { color: var(--gold); }
   .pub-authors { font-size: 14px; color: var(--text-muted); margin-bottom: 0.2rem; }
   .pub-journal { font-size: 14px; color: var(--accent); font-style: italic; }
   .pub-badge { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; padding: 3px 8px; border: 0.5px solid var(--border-gold); color: var(--gold); text-transform: uppercase; text-align: center; white-space: nowrap; }
@@ -198,7 +203,7 @@
           <div class="tl-dot gold"></div>
           <div>
             <span class="tl-year">2025</span>
-            <p class="tl-title">Normalizing VES production functions</p>
+            <p class="tl-title"><a href="https://doi.org/10.1016/j.econlet.2025.112794" target="_blank" rel="noopener noreferrer">Normalizing VES production functions</a></p>
             <p class="tl-journal">Economics Letters</p>
           </div>
         </div>
@@ -206,7 +211,7 @@
           <div class="tl-dot"></div>
           <div>
             <span class="tl-year">2025</span>
-            <p class="tl-title">TFP and Global Growth: Cross-country Income Inequality, 1960–2019</p>
+            <p class="tl-title"><a href="https://doi.org/10.1016/j.eap.2025.08.039" target="_blank" rel="noopener noreferrer">TFP and Global Growth: Cross-country Income Inequality, 1960–2019</a></p>
             <p class="tl-journal">Economic Analysis and Policy</p>
           </div>
         </div>
@@ -214,7 +219,7 @@
           <div class="tl-dot"></div>
           <div>
             <span class="tl-year">2025</span>
-            <p class="tl-title">Caregiver and General Population Preferences for Dependency-Related Health States</p>
+            <p class="tl-title"><a href="https://doi.org/10.1007/s40258-024-00908-x" target="_blank" rel="noopener noreferrer">Caregiver and General Population Preferences for Dependency-Related Health States</a></p>
             <p class="tl-journal">Applied Health Economics and Health Policy</p>
           </div>
         </div>
@@ -222,7 +227,7 @@
           <div class="tl-dot"></div>
           <div>
             <span class="tl-year">2024</span>
-            <p class="tl-title">Licensing of a new technology by an outside and uninformed licensor</p>
+            <p class="tl-title"><a href="https://doi.org/10.1007/s00712-024-00860-3" target="_blank" rel="noopener noreferrer">Licensing of a new technology by an outside and uninformed licensor</a></p>
             <p class="tl-journal">Journal of Economics</p>
           </div>
         </div>
@@ -230,7 +235,7 @@
           <div class="tl-dot"></div>
           <div>
             <span class="tl-year">2023</span>
-            <p class="tl-title">Efficiency with endogenous population growth</p>
+            <p class="tl-title"><a href="https://doi.org/10.3982/te4391" target="_blank" rel="noopener noreferrer">Efficiency with endogenous population growth</a></p>
             <p class="tl-journal">Theoretical Economics</p>
           </div>
         </div>
@@ -324,16 +329,16 @@
   <div class="container">
     <p class="section-label">Producción</p>
     <h2 class="section-title">Publicacións</h2>
-    <p class="section-desc">Traballo publicado en revistas de referencia. Inclúe contabilidade do crecemento, produtividade, economía da saúde, licenzas tecnolóxicas e fertilidade endóxena.</p>
+    <p class="section-desc">Traballo publicado en revistas con revisión anónima. Inclúe contabilidade do crecemento, produtividade, economía da saúde, licenzas tecnolóxicas e fertilidade endóxena.</p>
 
     <div class="pub-list">
 
       <div class="pub-item">
         <div class="pub-year">2026</div>
         <div>
-          <p class="pub-title">Spanish recessions 1850–2023: A business cycle accounting analysis</p>
+          <p class="pub-title"><a href="https://doi.org/10.1016/j.iref.2026.104953" target="_blank" rel="noopener noreferrer">Spanish recessions 1850–2023: A business cycle accounting analysis</a></p>
           <p class="pub-authors">F.X. Lores</p>
-          <p class="pub-journal">International Review of Economics &amp; Finance</p>
+          <p class="pub-journal">International Review of Economics &amp; Finance 106, 104953</p>
         </div>
         <span class="pub-badge new">Novo</span>
       </div>
@@ -341,9 +346,9 @@
       <div class="pub-item">
         <div class="pub-year">2025</div>
         <div>
-          <p class="pub-title">Normalizing VES production functions: extending the supply-side system approach</p>
+          <p class="pub-title"><a href="https://doi.org/10.1016/j.econlet.2025.112794" target="_blank" rel="noopener noreferrer">Normalizing VES production functions: extending the supply-side system approach</a></p>
           <p class="pub-authors">F. del Río, F. Rebelo</p>
-          <p class="pub-journal">Economics Letters</p>
+          <p class="pub-journal">Economics Letters 259, 112794</p>
         </div>
         <span class="pub-badge new">Novo</span>
       </div>
@@ -351,9 +356,9 @@
       <div class="pub-item">
         <div class="pub-year">2025</div>
         <div>
-          <p class="pub-title">TFP and global growth: Shaping cross-country income inequality, 1960–2019</p>
+          <p class="pub-title"><a href="https://doi.org/10.1016/j.eap.2025.08.039" target="_blank" rel="noopener noreferrer">TFP and global growth: Shaping cross-country income inequality, 1960–2019</a></p>
           <p class="pub-authors">F. del Río, F.X. Lores</p>
-          <p class="pub-journal">Economic Analysis and Policy</p>
+          <p class="pub-journal">Economic Analysis and Policy 88, 191–213</p>
         </div>
         <span class="pub-badge new">Novo</span>
       </div>
@@ -361,9 +366,9 @@
       <div class="pub-item">
         <div class="pub-year">2025</div>
         <div>
-          <p class="pub-title">OECD labour share trends: Factor efficiency vs. market distortions in a neoclassical framework</p>
+          <p class="pub-title"><a href="https://doi.org/10.1016/j.eap.2025.08.044" target="_blank" rel="noopener noreferrer">OECD labour share trends: Factor efficiency vs. market distortions in a neoclassical framework</a></p>
           <p class="pub-authors">F. del Río, F. Rebelo</p>
-          <p class="pub-journal">Economic Analysis and Policy</p>
+          <p class="pub-journal">Economic Analysis and Policy 87, 2554–2591</p>
         </div>
         <span class="pub-badge new">Novo</span>
       </div>
@@ -371,7 +376,7 @@
       <div class="pub-item">
         <div class="pub-year">2025</div>
         <div>
-          <p class="pub-title">Authors' Reply: Comparison of Caregiver and General Population Preferences for Dependency-Related Health States</p>
+          <p class="pub-title"><a href="https://doi.org/10.1007/s40258-025-00974-9" target="_blank" rel="noopener noreferrer">Authors' Reply: Comparison of Caregiver and General Population Preferences for Dependency-Related Health States</a></p>
           <p class="pub-authors">E. Rodríguez-Míguez, A. Sampayo</p>
           <p class="pub-journal">Applied Health Economics and Health Policy 23(5), 933–934</p>
         </div>
@@ -381,7 +386,7 @@
       <div class="pub-item">
         <div class="pub-year">2025</div>
         <div>
-          <p class="pub-title">Comparison of Caregiver and General Population Preferences for Dependency-Related Health States</p>
+          <p class="pub-title"><a href="https://doi.org/10.1007/s40258-024-00908-x" target="_blank" rel="noopener noreferrer">Comparison of Caregiver and General Population Preferences for Dependency-Related Health States</a></p>
           <p class="pub-authors">E. Rodríguez-Míguez, A. Sampayo</p>
           <p class="pub-journal">Applied Health Economics and Health Policy 23(1), 105–117</p>
         </div>
@@ -391,7 +396,7 @@
       <div class="pub-item">
         <div class="pub-year">2024</div>
         <div>
-          <p class="pub-title">Licensing of a new technology by an outside and uninformed licensor</p>
+          <p class="pub-title"><a href="https://doi.org/10.1007/s00712-024-00860-3" target="_blank" rel="noopener noreferrer">Licensing of a new technology by an outside and uninformed licensor</a></p>
           <p class="pub-authors">M. Antelo, A. Sampayo</p>
           <p class="pub-journal">Journal of Economics 142(2), 111–162</p>
         </div>
@@ -401,7 +406,7 @@
       <div class="pub-item">
         <div class="pub-year">2023</div>
         <div>
-          <p class="pub-title">Accounting for the role of investment frictions in recessions</p>
+          <p class="pub-title"><a href="https://doi.org/10.1111/ecca.12485" target="_blank" rel="noopener noreferrer">Accounting for the role of investment frictions in recessions</a></p>
           <p class="pub-authors">F. del Río, F.X. Lores</p>
           <p class="pub-journal">Economica 90(360), 1089–1118</p>
         </div>
@@ -411,7 +416,7 @@
       <div class="pub-item">
         <div class="pub-year">2023</div>
         <div>
-          <p class="pub-title">Accounting for Spanish economic development 1850–2019</p>
+          <p class="pub-title"><a href="https://doi.org/10.1016/j.econmod.2023.106200" target="_blank" rel="noopener noreferrer">Accounting for Spanish economic development 1850–2019</a></p>
           <p class="pub-authors">F. del Río, F.X. Lores</p>
           <p class="pub-journal">Economic Modelling 121, 106200</p>
         </div>
@@ -421,7 +426,7 @@
       <div class="pub-item">
         <div class="pub-year">2023</div>
         <div>
-          <p class="pub-title">Efficiency with endogenous population growth: Do children have too many rights?</p>
+          <p class="pub-title"><a href="https://doi.org/10.3982/te4391" target="_blank" rel="noopener noreferrer">Efficiency with endogenous population growth: Do children have too many rights?</a></p>
           <p class="pub-authors">M. Pérez-Nievas</p>
           <p class="pub-journal">Theoretical Economics 18(4), 1375–1406</p>
         </div>
@@ -431,7 +436,7 @@
       <div class="pub-item">
         <div class="pub-year">2021</div>
         <div>
-          <p class="pub-title">Accounting for US economic growth 1954–2017</p>
+          <p class="pub-title"><a href="https://doi.org/10.1016/j.econmod.2021.105529" target="_blank" rel="noopener noreferrer">Accounting for US economic growth 1954–2017</a></p>
           <p class="pub-authors">F. del Río, F.X. Lores</p>
           <p class="pub-journal">Economic Modelling 101, 105529</p>
         </div>
@@ -441,7 +446,7 @@
       <div class="pub-item">
         <div class="pub-year">2021</div>
         <div>
-          <p class="pub-title">The impact of rent seeking on social infrastructure and productivity</p>
+          <p class="pub-title"><a href="https://doi.org/10.1111/rode.12772" target="_blank" rel="noopener noreferrer">The impact of rent seeking on social infrastructure and productivity</a></p>
           <p class="pub-authors">F. del Río</p>
           <p class="pub-journal">Review of Development Economics 25(3), 1741–1760</p>
         </div>
@@ -451,7 +456,7 @@
       <div class="pub-item">
         <div class="pub-year">2019</div>
         <div>
-          <p class="pub-title">Efficiency and endogenous fertility</p>
+          <p class="pub-title"><a href="https://doi.org/10.3982/te2138" target="_blank" rel="noopener noreferrer">Efficiency and endogenous fertility</a></p>
           <p class="pub-authors">M. Pérez-Nievas, J.I. Conde-Ruiz, E.L. Giménez</p>
           <p class="pub-journal">Theoretical Economics 14(2), 475–512</p>
         </div>
@@ -461,7 +466,7 @@
       <div class="pub-item">
         <div class="pub-year">2019</div>
         <div>
-          <p class="pub-title">The decline in capital efficiency and labour share</p>
+          <p class="pub-title"><a href="https://doi.org/10.1111/ecca.12279" target="_blank" rel="noopener noreferrer">The decline in capital efficiency and labour share</a></p>
           <p class="pub-authors">F. del Río, F.X. Lores</p>
           <p class="pub-journal">Economica 86(344), 635–662</p>
         </div>
@@ -471,7 +476,7 @@
       <div class="pub-item">
         <div class="pub-year">2019</div>
         <div>
-          <p class="pub-title">Property rights, predation, and productivity</p>
+          <p class="pub-title"><a href="https://doi.org/10.1111/sjoe.12294" target="_blank" rel="noopener noreferrer">Property rights, predation, and productivity</a></p>
           <p class="pub-authors">F. del Río, F.X. Lores</p>
           <p class="pub-journal">The Scandinavian Journal of Economics 121(3), 1154–1188</p>
         </div>
@@ -481,7 +486,7 @@
       <div class="pub-item">
         <div class="pub-year">2017</div>
         <div>
-          <p class="pub-title">Regulation and rent-seeking: The role of the distribution of political and economic power</p>
+          <p class="pub-title"><a href="https://doi.org/10.1111/jpet.12231" target="_blank" rel="noopener noreferrer">Regulation and rent-seeking: The role of the distribution of political and economic power</a></p>
           <p class="pub-authors">F. del Río, F.X. Lores</p>
           <p class="pub-journal">Journal of Public Economic Theory 19(5), 986–1008</p>
         </div>
@@ -491,7 +496,7 @@
       <div class="pub-item">
         <div class="pub-year">2017</div>
         <div>
-          <p class="pub-title">On the number of licenses with signalling</p>
+          <p class="pub-title"><a href="https://doi.org/10.1111/manc.12157" target="_blank" rel="noopener noreferrer">On the number of licenses with signalling</a></p>
           <p class="pub-authors">M. Antelo, A. Sampayo</p>
           <p class="pub-journal">The Manchester School 85(6), 635–660</p>
         </div>
@@ -501,7 +506,7 @@
       <div class="pub-item">
         <div class="pub-year">2017</div>
         <div>
-          <p class="pub-title">Complementarity, linkages between firms, and the effect of entry costs on productivity</p>
+          <p class="pub-title"><a href="https://doi.org/10.1111/rode.12339" target="_blank" rel="noopener noreferrer">Complementarity, linkages between firms, and the effect of entry costs on productivity</a></p>
           <p class="pub-authors">F. del Río, A. Sampayo</p>
           <p class="pub-journal">Review of Development Economics 21(4), 1281–1304</p>
         </div>
@@ -511,7 +516,7 @@
       <div class="pub-item">
         <div class="pub-year">2016</div>
         <div>
-          <p class="pub-title">The DEP-6D, a new preference-based measure to assess health states of dependency</p>
+          <p class="pub-title"><a href="https://doi.org/10.1016/j.socscimed.2016.02.020" target="_blank" rel="noopener noreferrer">The DEP-6D, a new preference-based measure to assess health states of dependency</a></p>
           <p class="pub-authors">E. Rodríguez-Míguez, J.M. Abellán-Perpiñán, X.C. Álvarez, X.M. González, A. Sampayo et al.</p>
           <p class="pub-journal">Social Science &amp; Medicine 153, 210–219</p>
         </div>
@@ -521,7 +526,7 @@
       <div class="pub-item">
         <div class="pub-year">2014</div>
         <div>
-          <p class="pub-title">Obsolescence and productivity</p>
+          <p class="pub-title"><a href="https://doi.org/10.1007/s10258-014-0106-6" target="_blank" rel="noopener noreferrer">Obsolescence and productivity</a></p>
           <p class="pub-authors">F. del Río, A. Sampayo</p>
           <p class="pub-journal">Portuguese Economic Journal 13(3), 195–216</p>
         </div>
@@ -531,7 +536,7 @@
       <div class="pub-item">
         <div class="pub-year">2013</div>
         <div>
-          <p class="pub-title">Self-fulfilling crises with default and devaluation</p>
+          <p class="pub-title"><a href="https://doi.org/10.1007/s00199-012-0689-5" target="_blank" rel="noopener noreferrer">Self-fulfilling crises with default and devaluation</a></p>
           <p class="pub-authors">J.M. Da-Rocha, E.L. Giménez, F.X. Lores</p>
           <p class="pub-journal">Economic Theory 53(3), 499–535</p>
         </div>
@@ -541,7 +546,7 @@
       <div class="pub-item">
         <div class="pub-year">2010</div>
         <div>
-          <p class="pub-title">Investment-specific technical progress, capital obsolescence and job creation</p>
+          <p class="pub-title"><a href="https://doi.org/10.1016/j.labeco.2009.09.005" target="_blank" rel="noopener noreferrer">Investment-specific technical progress, capital obsolescence and job creation</a></p>
           <p class="pub-authors">F. del Río</p>
           <p class="pub-journal">Labour Economics 17(1), 248–257</p>
         </div>
@@ -551,7 +556,7 @@
       <div class="pub-item">
         <div class="pub-year">2010</div>
         <div>
-          <p class="pub-title">Millian efficiency with endogenous fertility</p>
+          <p class="pub-title"><a href="https://doi.org/10.1111/j.1467-937X.2009.00576.x" target="_blank" rel="noopener noreferrer">Millian efficiency with endogenous fertility</a></p>
           <p class="pub-authors">J.I. Conde-Ruiz, E.L. Giménez, M. Pérez-Nievas</p>
           <p class="pub-journal">The Review of Economic Studies 77(1), 154–187</p>
         </div>
@@ -561,7 +566,7 @@
       <div class="pub-item">
         <div class="pub-year">2009</div>
         <div>
-          <p class="pub-title">Technological progress, obsolescence, and depreciation</p>
+          <p class="pub-title"><a href="https://doi.org/10.1093/oep/gpn004" target="_blank" rel="noopener noreferrer">Technological progress, obsolescence, and depreciation</a></p>
           <p class="pub-authors">R. Boucekkine, F. del Río, B. Martínez</p>
           <p class="pub-journal">Oxford Economic Papers 61(3), 440–466</p>
         </div>
@@ -571,7 +576,7 @@
       <div class="pub-item">
         <div class="pub-year">2008</div>
         <div>
-          <p class="pub-title">A vintage model of trade in secondhand markets and the lifetime of durable goods</p>
+          <p class="pub-title"><a href="https://doi.org/10.1080/08898480802440828" target="_blank" rel="noopener noreferrer">A vintage model of trade in secondhand markets and the lifetime of durable goods</a></p>
           <p class="pub-authors">O. Licandro, L.A. Puch, A. Sampayo</p>
           <p class="pub-journal">Mathematical Population Studies 15(4), 249–266</p>
         </div>
@@ -581,7 +586,7 @@
       <div class="pub-item">
         <div class="pub-year">2007</div>
         <div>
-          <p class="pub-title">Demography, education, structural change and convergence: Galicia–Spain, 2001–2050</p>
+          <p class="pub-title"><a href="https://www.redalyc.org/pdf/969/96915879005.pdf" target="_blank" rel="noopener noreferrer">Demography, education, structural change and convergence: Galicia–Spain, 2001–2050</a></p>
           <p class="pub-authors">J.M. Da-Rocha, F.X. Lores</p>
           <p class="pub-journal">Revista de Economía Aplicada 15(43), 123–144</p>
         </div>
@@ -591,7 +596,7 @@
       <div class="pub-item">
         <div class="pub-year">2006</div>
         <div>
-          <p class="pub-title">The effects of replacement schemes on car sales: The Spanish case</p>
+          <p class="pub-title"><a href="https://www.fundacionsepi.es/investigacion/revistas/paperArchive/May2006/v30i2a3.pdf" target="_blank" rel="noopener noreferrer">The effects of replacement schemes on car sales: The Spanish case</a></p>
           <p class="pub-authors">O. Licandro, A. Sampayo</p>
           <p class="pub-journal">Investigaciones Económicas 30(2), 239–282</p>
         </div>
@@ -601,7 +606,7 @@
       <div class="pub-item">
         <div class="pub-year">2005</div>
         <div>
-          <p class="pub-title">Vintage capital and the dynamics of the AK model</p>
+          <p class="pub-title"><a href="https://doi.org/10.1016/j.jet.2004.02.006" target="_blank" rel="noopener noreferrer">Vintage capital and the dynamics of the AK model</a></p>
           <p class="pub-authors">R. Boucekkine, O. Licandro, L.A. Puch, F. del Río</p>
           <p class="pub-journal">Journal of Economic Theory 120(1), 39–72</p>
         </div>
@@ -611,7 +616,7 @@
       <div class="pub-item">
         <div class="pub-year">2005</div>
         <div>
-          <p class="pub-title">Obsolescence and modernization in the growth process</p>
+          <p class="pub-title"><a href="https://doi.org/10.1016/j.jdeveco.2004.03.004" target="_blank" rel="noopener noreferrer">Obsolescence and modernization in the growth process</a></p>
           <p class="pub-authors">R. Boucekkine, F. del Río, O. Licandro</p>
           <p class="pub-journal">Journal of Development Economics 77(1), 153–171</p>
         </div>
@@ -621,7 +626,7 @@
       <div class="pub-item">
         <div class="pub-year">2003</div>
         <div>
-          <p class="pub-title">Embodied technological change, learning-by-doing and the productivity slowdown</p>
+          <p class="pub-title"><a href="https://doi.org/10.1111/1467-9442.00006" target="_blank" rel="noopener noreferrer">Embodied technological change, learning-by-doing and the productivity slowdown</a></p>
           <p class="pub-authors">R. Boucekkine, F. del Río, O. Licandro</p>
           <p class="pub-journal">The Scandinavian Journal of Economics 105(1), 87–98</p>
         </div>
@@ -631,7 +636,7 @@
       <div class="pub-item">
         <div class="pub-year">1999</div>
         <div>
-          <p class="pub-title">Endogenous vs exogenously driven fluctuations in vintage capital models</p>
+          <p class="pub-title"><a href="https://doi.org/10.1006/jeth.1999.2554" target="_blank" rel="noopener noreferrer">Endogenous vs exogenously driven fluctuations in vintage capital models</a></p>
           <p class="pub-authors">R. Boucekkine, F. del Río, O. Licandro</p>
           <p class="pub-journal">Journal of Economic Theory 88(1), 161–187</p>
         </div>
