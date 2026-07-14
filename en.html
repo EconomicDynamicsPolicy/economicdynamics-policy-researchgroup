@@ -92,10 +92,10 @@
   .section-desc { font-size: 17px; color: var(--text-muted); max-width: 600px; line-height: 1.7; }
 
   /* PEOPLE */
-  .people-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .people-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; transform: translateX(-1.75rem); }
   .person-card { border: 0.5px solid var(--border); padding: 2rem 1.75rem; transition: border-color 0.25s; }
   .person-card:hover { border-color: var(--accent); }
-  .person-photo { width: 260px; height: 260px; border-radius: 50%; object-fit: cover; object-position: center top; border: 1.5px solid var(--border); margin-bottom: 1rem; display: block; background: var(--slate); }
+  .person-photo { width: 100%; max-width: 220px; aspect-ratio: 1; height: auto; border-radius: 50%; object-fit: cover; object-position: center top; border: 1.5px solid var(--border); margin: 0 auto 1rem; display: block; background: var(--slate); }
   .person-name { font-size: 17px; font-weight: 500; color: var(--ivory); margin-bottom: 0.2rem; }
   .person-role { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 0.4rem; }
   .person-affil { font-size: 14px; color: var(--accent); margin-bottom: 0.5rem; }
@@ -160,7 +160,7 @@
     .hero-right { display: none; }
     .hero-left { padding: 7rem 2rem 4rem; }
     .stats-bar { grid-template-columns: repeat(2, 1fr); }
-    .people-grid { grid-template-columns: 1fr 1fr; }
+    .people-grid { grid-template-columns: 1fr 1fr; transform: none; }
     .pub-item { grid-template-columns: 55px 1fr; }
     .pub-badge { display: none; }
     .services-grid { justify-content: center; }
@@ -262,7 +262,7 @@
     <span class="stat-label">Researchers</span>
   </div>
   <div class="stat-cell">
-    <span class="stat-num">1146<span>+</span></span>
+    <span class="stat-num">1148<span>+</span></span>
     <span class="stat-label">Total Citations</span>
   </div>
   <div class="stat-cell">
@@ -302,7 +302,7 @@
         <p class="person-affil">University of Santiago de Compostela · <a href="mailto:franciscoxavier.lores@usc.es" style="color:var(--accent);text-decoration:none;">franciscoxavier.lores@usc.es</a></p>
         <p class="person-fields">Macroeconomics · Economic growth · Business cycles · Business cycle accounting · Investment frictions · Regulation and rent-seeking</p>
         <div class="person-metrics">
-          <div class="metric"><span class="metric-val">160</span><span class="metric-lbl">Citations</span></div>
+          <div class="metric"><span class="metric-val">162</span><span class="metric-lbl">Citations</span></div>
           <div class="metric"><span class="metric-val">7</span><span class="metric-lbl">h-index</span></div>
           <div class="metric"><span class="metric-val">6</span><span class="metric-lbl">i10-index</span></div>
         </div>
@@ -314,7 +314,7 @@
         <p class="person-affil">University of Santiago de Compostela · <a href="mailto:miguel.perez-nievas@usc.es" style="color:var(--accent);text-decoration:none;">miguel.perez-nievas@usc.es</a></p>
         <p class="person-fields">Microeconomics · Endogenous fertility · Social choice · Efficiency · Information economics</p>
         <div class="person-metrics">
-          <div class="metric"><span class="metric-val">93</span><span class="metric-lbl">Citations</span></div>
+          <div class="metric"><span class="metric-val">94</span><span class="metric-lbl">Citations</span></div>
           <div class="metric"><span class="metric-val">5</span><span class="metric-lbl">h-index</span></div>
           <div class="metric"><span class="metric-val">1</span><span class="metric-lbl">i10-index</span></div>
         </div>
@@ -326,7 +326,7 @@
         <p class="person-affil">University of Santiago de Compostela · <a href="mailto:ar.sampayo@usc.es" style="color:var(--accent);text-decoration:none;">ar.sampayo@usc.es</a> · <a href="https://arsampayo.github.io/sampayo-website/sampayo.html" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;">personal web</a></p>
         <p class="person-fields">Technology licensing · Health economics · Dependency · Durable goods · Productivity</p>
         <div class="person-metrics">
-          <div class="metric"><span class="metric-val">129</span><span class="metric-lbl">Citations</span></div>
+          <div class="metric"><span class="metric-val">128</span><span class="metric-lbl">Citations</span></div>
           <div class="metric"><span class="metric-val">6</span><span class="metric-lbl">h-index</span></div>
           <div class="metric"><span class="metric-val">6</span><span class="metric-lbl">i10-index</span></div>
         </div>
@@ -343,6 +343,16 @@
     <p class="section-desc">Peer-reviewed work sorted by date. Covers growth accounting, productivity, health economics, technology licensing, and endogenous fertility.</p>
 
     <div class="pub-list" style="margin-top:3rem;">
+
+      <div class="pub-item">
+        <div class="pub-year">2026</div>
+        <div>
+          <p class="pub-title">Spanish recessions 1850–2023: A business cycle accounting analysis</p>
+          <p class="pub-authors">F.X. Lores</p>
+          <p class="pub-journal">International Review of Economics &amp; Finance</p>
+        </div>
+        <span class="pub-badge new">New</span>
+      </div>
 
       <div class="pub-item">
         <div class="pub-year">2025</div>
@@ -475,11 +485,11 @@
       </div>
 
       <div class="pub-item">
-        <div class="pub-year">2018</div>
+        <div class="pub-year">2019</div>
         <div>
           <p class="pub-title">Property rights, predation, and productivity</p>
           <p class="pub-authors">F. del Río, F.X. Lores</p>
-          <p class="pub-journal">The Scandinavian Journal of Economics</p>
+          <p class="pub-journal">The Scandinavian Journal of Economics 121(3), 1154–1188</p>
         </div>
         <span class="pub-badge"></span>
       </div>
@@ -535,6 +545,26 @@
       </div>
 
       <div class="pub-item">
+        <div class="pub-year">2013</div>
+        <div>
+          <p class="pub-title">Self-fulfilling crises with default and devaluation</p>
+          <p class="pub-authors">J.M. Da-Rocha, E.L. Giménez, F.X. Lores</p>
+          <p class="pub-journal">Economic Theory 53(3), 499–535</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2010</div>
+        <div>
+          <p class="pub-title">Investment-specific technical progress, capital obsolescence and job creation</p>
+          <p class="pub-authors">F. del Río</p>
+          <p class="pub-journal">Labour Economics 17(1), 248–257</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+      <div class="pub-item">
         <div class="pub-year">2010</div>
         <div>
           <p class="pub-title">Millian efficiency with endogenous fertility</p>
@@ -542,6 +572,16 @@
           <p class="pub-journal">The Review of Economic Studies 77(1), 154–187</p>
         </div>
         <span class="pub-badge">Top 5</span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2009</div>
+        <div>
+          <p class="pub-title">Technological progress, obsolescence, and depreciation</p>
+          <p class="pub-authors">R. Boucekkine, F. del Río, B. Martínez</p>
+          <p class="pub-journal">Oxford Economic Papers 61(3), 440–466</p>
+        </div>
+        <span class="pub-badge"></span>
       </div>
 
       <div class="pub-item">
@@ -555,11 +595,61 @@
       </div>
 
       <div class="pub-item">
+        <div class="pub-year">2007</div>
+        <div>
+          <p class="pub-title">Demography, education, structural change and convergence: Galicia–Spain, 2001–2050</p>
+          <p class="pub-authors">J.M. Da-Rocha, F.X. Lores</p>
+          <p class="pub-journal">Revista de Economía Aplicada 15(43), 123–144</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+      <div class="pub-item">
         <div class="pub-year">2006</div>
         <div>
           <p class="pub-title">The effects of replacement schemes on car sales: The Spanish case</p>
           <p class="pub-authors">O. Licandro, A. Sampayo</p>
           <p class="pub-journal">Investigaciones Económicas 30(2), 239–282</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2005</div>
+        <div>
+          <p class="pub-title">Vintage capital and the dynamics of the AK model</p>
+          <p class="pub-authors">R. Boucekkine, O. Licandro, L.A. Puch, F. del Río</p>
+          <p class="pub-journal">Journal of Economic Theory 120(1), 39–72</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2005</div>
+        <div>
+          <p class="pub-title">Obsolescence and modernization in the growth process</p>
+          <p class="pub-authors">R. Boucekkine, F. del Río, O. Licandro</p>
+          <p class="pub-journal">Journal of Development Economics 77(1), 153–171</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">2003</div>
+        <div>
+          <p class="pub-title">Embodied technological change, learning-by-doing and the productivity slowdown</p>
+          <p class="pub-authors">R. Boucekkine, F. del Río, O. Licandro</p>
+          <p class="pub-journal">The Scandinavian Journal of Economics 105(1), 87–98</p>
+        </div>
+        <span class="pub-badge"></span>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-year">1999</div>
+        <div>
+          <p class="pub-title">Endogenous vs exogenously driven fluctuations in vintage capital models</p>
+          <p class="pub-authors">R. Boucekkine, F. del Río, O. Licandro</p>
+          <p class="pub-journal">Journal of Economic Theory 88(1), 161–187</p>
         </div>
         <span class="pub-badge"></span>
       </div>
@@ -655,6 +745,7 @@
             <p class="contact-value">
               <a href="https://scholar.google.com/citations?user=nPSRBv4AAAAJ" target="_blank">Antonio Sampayo</a><br>
               <a href="https://scholar.google.com/citations?user=JO4cCMkAAAAJ" target="_blank">Fernando del Río</a><br>
+              <a href="https://scholar.google.com/citations?user=grQsyBYAAAAJ" target="_blank">Francisco Xavier Lores</a><br>
               <a href="https://scholar.google.com/citations?user=Kx5Re7sAAAAJ" target="_blank">Mikel Pérez-Nievas</a>
             </p>
           </div>
@@ -662,8 +753,8 @@
         <div class="contact-item">
           <span class="contact-icon">◈</span>
           <div>
-            <p class="contact-label">Collaborating Institutions</p>
-            <p class="contact-value">Universidad de Vigo · Universidad Complutense de Madrid · AMSE · University of Leicester</p>
+            <p class="contact-label">External Collaborators' Affiliations</p>
+            <p class="contact-value">University of Vigo · Complutense University in Madrid · AMSE-Marseille · University of Leicester · UNED · University of the Balearic Islands · Catholic University in Porto</p>
           </div>
         </div>
       </div>
