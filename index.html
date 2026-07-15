@@ -9,14 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #0D1B2A;
-    --slate: #1C3B5A;
-    --accent: #4A7FA5;
-    --gold: #C4A35A;
-    --gold-light: #D4B87A;
-    --ivory: #F5F0E8;
-    --text-muted: #8A9BB0;
-    --border: rgba(74,127,165,0.2);
+    --white: #FFFFFF;
+    --blue: #012169;           /* Pantone 280 C */
+    --blue-dark: #001447;
+    --blue-muted: rgba(1, 33, 105, 0.6);
+    --blue-tint: rgba(1, 33, 105, 0.05);
+    --navy: var(--white);
+    --accent: var(--blue);
+    --ivory: var(--blue);
+    --text-muted: var(--blue-muted);
+    --border: rgba(1, 33, 105, 0.15);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { height: 100%; }
@@ -33,7 +35,7 @@
     text-align: center;
     padding: 2rem 0 0;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.18em;
     color: var(--text-muted);
     text-transform: uppercase;
@@ -61,8 +63,8 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--gold);
-    box-shadow: 0 0 0 1px var(--navy), 0 0 0 2px var(--gold);
+    background: var(--blue);
+    box-shadow: 0 0 0 1px var(--white), 0 0 0 2px var(--blue);
   }
 
   .side {
@@ -76,7 +78,7 @@
     transition: background 0.4s ease;
     cursor: pointer;
   }
-  .side:hover { background: rgba(74,127,165,0.04); }
+  .side:hover { background: var(--blue-tint); }
 
   .side-gl { border-right: none; }
   .side-en { border-left: none; }
@@ -88,12 +90,12 @@
     margin-bottom: 2rem;
     display: block;
     border-radius: 6px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.45), 0 1px 3px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
     flex-shrink: 0;
   }
-  .side:hover .flag { transform: scale(1.08); box-shadow: 0 6px 22px rgba(0,0,0,0.5), 0 2px 5px rgba(0,0,0,0.35); }
+  .side:hover .flag { transform: scale(1.08); box-shadow: 0 6px 22px rgba(0,0,0,0.18), 0 2px 5px rgba(0,0,0,0.1); }
 
   /* group name */
   .group-name {
@@ -105,20 +107,26 @@
     line-height: 1.25;
     margin-bottom: 0.5rem;
   }
-  .group-name em {
-    font-style: italic;
-    color: var(--gold-light);
-  }
 
   .group-slug {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.14em;
     color: var(--text-muted);
     text-transform: uppercase;
     text-align: center;
     margin-bottom: 2.5rem;
   }
+  .side .group-slug { margin-bottom: 1rem; }
+  .group-university {
+    font-size: 13px;
+    color: var(--accent);
+    text-align: center;
+    line-height: 1.45;
+    max-width: 260px;
+    margin-bottom: 0.75rem;
+  }
+  .usc-logo { height: 38px; width: auto; display: block; margin: 0 auto 1.5rem; }
 
   /* enter button */
   .enter-btn {
@@ -128,7 +136,7 @@
     padding: 0.6rem 1.4rem;
     border: 0.5px solid var(--border);
     color: var(--text-muted);
-    font-size: 12px;
+    font-size: 14px;
     letter-spacing: 0.08em;
     font-family: 'JetBrains Mono', monospace;
     text-transform: uppercase;
@@ -136,8 +144,8 @@
     text-decoration: none;
   }
   .side:hover .enter-btn {
-    border-color: var(--gold);
-    color: var(--gold);
+    border-color: var(--blue);
+    color: var(--blue);
   }
 
   /* bottom bar */
@@ -150,7 +158,7 @@
     justify-content: center;
     gap: 0.5rem;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 0.14em;
     color: var(--text-muted);
     text-transform: uppercase;
@@ -160,7 +168,7 @@
     display: inline-block;
     padding: 2px 8px;
     border: 0.5px solid var(--border);
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 0.1em;
   }
 
@@ -192,11 +200,13 @@
         <!-- diagonal stripe: top-left to bottom-right, ~1/4 width -->
         <polygon points="0,0 26,0 88,60 62,60" fill="#2B9ED4"/>
         <!-- subtle inner border -->
-        <rect width="88" height="60" rx="6" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="1"/>
+        <rect width="88" height="60" rx="6" fill="none" stroke="rgba(0,0,0,0.18)" stroke-width="1"/>
       </g>
     </svg>
-    <h1 class="group-name">Economía <em>Dinámica</em><br>e Políticas</h1>
+    <h1 class="group-name">Economía Dinámica<br>e Políticas</h1>
     <p class="group-slug">Grupo de Investigación</p>
+    <p class="group-university">Universidade de Santiago de Compostela</p>
+    <img src="usc.png" alt="Universidade de Santiago de Compostela" class="usc-logo">
     <span class="enter-btn">Entrar &rarr;</span>
   </a>
 
@@ -229,8 +239,10 @@
         <rect width="88" height="60" rx="6" fill="none" stroke="rgba(0,0,0,0.15)" stroke-width="1"/>
       </g>
     </svg>
-    <h1 class="group-name">Economic <em>Dynamics</em><br>&amp; Policy</h1>
+    <h1 class="group-name">Economic Dynamics<br>&amp; Policy</h1>
     <p class="group-slug">Research Group</p>
+    <p class="group-university">University of Santiago de Compostela</p>
+    <img src="usc.png" alt="University of Santiago de Compostela" class="usc-logo">
     <span class="enter-btn">Enter &rarr;</span>
   </a>
 

@@ -9,16 +9,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #FFFFFF;
-    --slate: #F0F2F5;
-    --accent: #00529B;
-    --gold: #8B6914;
-    --gold-light: #6B4F10;
-    --ivory: #1A1A2E;
-    --text-muted: #6C757D;
-    --text-body: #374151;
-    --border: rgba(0,0,0,0.1);
-    --border-gold: rgba(139,105,20,0.2);
+    --white: #FFFFFF;
+    --blue: #012169;           /* Pantone 280 C */
+    --blue-dark: #001447;
+    --blue-muted: rgba(1, 33, 105, 0.6);
+    --blue-tint: rgba(1, 33, 105, 0.05);
+    --navy: var(--white);
+    --slate: var(--blue-tint);
+    --accent: var(--blue);
+    --ivory: var(--blue);
+    --text-muted: var(--blue-muted);
+    --text-body: #1a2952;
+    --border: rgba(1, 33, 105, 0.15);
+    --border-blue: rgba(1, 33, 105, 0.25);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -30,12 +33,12 @@
     border-bottom: 0.5px solid var(--border);
     padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 60px;
   }
-  .nav-logo { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; text-decoration: none; }
+  .nav-logo { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: var(--blue); text-transform: uppercase; text-decoration: none; }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a { text-decoration: none; font-size: 15px; color: var(--text-muted); letter-spacing: 0.04em; transition: color 0.2s; }
   .nav-links a:hover { color: var(--ivory); }
-  .lang-switch { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; padding: 3px 8px; border: 0.5px solid var(--border-gold); color: var(--gold); text-decoration: none; text-transform: uppercase; transition: background 0.2s; }
-  .lang-switch:hover { background: rgba(139,105,20,0.06); }
+  .lang-switch { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; padding: 3px 8px; border: 0.5px solid var(--border-blue); color: var(--blue); text-decoration: none; text-transform: uppercase; transition: background 0.2s; }
+  .lang-switch:hover { background: var(--blue-tint); }
 
   .hero {
     min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
@@ -43,19 +46,23 @@
   }
   .hero::before {
     content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(0,82,155,0.03) 0%, transparent 70%),
-                radial-gradient(ellipse 40% 60% at 20% 80%, rgba(139,105,20,0.02) 0%, transparent 60%);
+    background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(1,33,105,0.04) 0%, transparent 70%);
     pointer-events: none;
   }
   .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 8rem 3.5rem 4rem; position: relative; z-index: 1; }
-  .hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
-  .hero-eyebrow::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--gold); }
+  .hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.18em; color: var(--blue); text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+  .hero-eyebrow::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--blue); }
   .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 400; line-height: 1.12; color: var(--ivory); margin-bottom: 0.4rem; }
+  .hero-title-row { display: flex; align-items: center; flex-wrap: wrap; }
+  .hero-usc { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; text-align: center; padding: 0 1rem; }
+  .hero-usc a { font-size: 17px; color: var(--accent); text-decoration: none; line-height: 1.5; max-width: 240px; }
+  .hero-usc a:hover { color: var(--blue-dark); }
+  .usc-logo { height: 64px; width: auto; display: block; }
   .hero-sub { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.14em; color: var(--text-muted); text-transform: uppercase; margin: 1.5rem 0 2.5rem; }
   .hero-desc { font-size: 18px; color: var(--text-body); max-width: 480px; line-height: 1.75; margin-bottom: 3rem; }
   .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.6rem; background: var(--gold); color: var(--navy); text-decoration: none; font-size: 15px; font-weight: 600; letter-spacing: 0.04em; transition: background 0.2s, transform 0.15s; }
-  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.6rem; background: var(--blue); color: var(--white); text-decoration: none; font-size: 15px; font-weight: 600; letter-spacing: 0.04em; transition: background 0.2s, transform 0.15s; }
+  .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); }
   .btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.6rem; background: transparent; color: var(--ivory); text-decoration: none; font-size: 15px; letter-spacing: 0.04em; border: 0.5px solid var(--border); transition: border-color 0.2s, color 0.2s; }
   .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
@@ -72,24 +79,24 @@
   .tl-item:nth-child(5) { animation-delay: 1.0s; }
   @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
   .tl-dot { width: 13px; height: 13px; border-radius: 50%; border: 1.5px solid var(--accent); background: var(--navy); margin-top: 3px; position: relative; z-index: 1; }
-  .tl-dot.gold { border-color: var(--gold); background: var(--gold); }
-  .tl-year { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--gold); letter-spacing: 0.06em; display: block; margin-bottom: 2px; }
+  .tl-dot.active { border-color: var(--blue); background: var(--blue); }
+  .tl-year { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--blue); letter-spacing: 0.06em; display: block; margin-bottom: 2px; }
   .tl-title { font-size: 15px; font-weight: 500; color: var(--ivory); line-height: 1.35; margin-bottom: 2px; }
   .tl-title a { color: inherit; text-decoration: none; }
-  .tl-title a:hover { color: var(--gold); }
+  .tl-title a:hover { color: var(--blue); }
   .tl-journal { font-size: 13px; color: var(--text-muted); font-style: italic; }
 
   .stats-bar { border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); display: grid; grid-template-columns: repeat(4, 1fr); }
   .stat-cell { padding: 2rem 2.5rem; border-right: 0.5px solid var(--border); text-align: center; }
   .stat-cell:last-child { border-right: none; }
   .stat-num { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 600; color: var(--ivory); display: block; line-height: 1; margin-bottom: 0.3rem; }
-  .stat-num span { font-size: 1.4rem; color: var(--gold); }
+  .stat-num span { font-size: 1.4rem; color: var(--blue); }
   .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: var(--text-muted); text-transform: uppercase; }
 
   section { padding: 6rem 0; }
   .container { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
-  .section-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-  .section-label::after { content: ''; flex: 1; height: 0.5px; background: var(--border-gold); max-width: 120px; }
+  .section-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.18em; color: var(--blue); text-transform: uppercase; display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+  .section-label::after { content: ''; flex: 1; height: 0.5px; background: var(--border-blue); max-width: 120px; }
   .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; color: var(--ivory); line-height: 1.25; margin-bottom: 1rem; }
   .section-desc { font-size: 17px; color: var(--text-muted); max-width: 600px; line-height: 1.7; }
 
@@ -100,65 +107,78 @@
   .person-photo { width: 220px; height: 220px; max-width: 220px; flex-shrink: 0; border-radius: 50%; object-fit: cover; object-position: center top; border: 1.5px solid var(--border); margin: 0 auto 1rem; display: block; background: var(--slate); }
   .person-photo[src="francisco-lores-2.jpg"] { object-position: 58% top; }
   .person-name { font-size: 17px; font-weight: 500; color: var(--ivory); margin-bottom: 0.2rem; width: 100%; }
-  .person-role { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 0.4rem; width: 100%; }
+  .person-role { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--blue); letter-spacing: 0.08em; margin-bottom: 0.4rem; width: 100%; }
   .person-affil { font-size: 14px; color: var(--accent); margin-bottom: 0.5rem; width: 100%; }
   .person-fields { font-size: 14px; color: var(--text-muted); line-height: 1.55; width: 100%; }
   .person-metrics { display: flex; gap: 1rem; margin-top: 1rem; padding-top: 0.75rem; border-top: 0.5px solid var(--border); width: 100%; }
   .metric { text-align: center; }
   .metric-val { font-family: 'JetBrains Mono', monospace; font-size: 15px; color: var(--ivory); display: block; }
   .metric-lbl { font-size: 12px; color: var(--text-muted); letter-spacing: 0.06em; }
+  .person-scholar { margin-top: 0.75rem; width: 100%; }
+  .person-scholar a { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent); letter-spacing: 0.06em; text-decoration: none; }
+  .person-scholar a:hover { color: var(--blue-dark); }
+
+  #collaborators { background: var(--blue-tint); border-top: 0.5px solid var(--border); padding: 4rem 0; }
+  .collab-list { margin-top: 2rem; border-top: 0.5px solid var(--border); list-style: none; padding: 0; }
+  .collab-item { display: grid; grid-template-columns: minmax(200px, 1fr) 1.5fr; gap: 1.5rem; padding: 1.1rem 0; border-bottom: 0.5px solid var(--border); align-items: baseline; }
+  .collab-name { font-size: 16px; font-weight: 500; color: var(--ivory); }
+  .collab-name a { color: inherit; text-decoration: none; }
+  .collab-name a:hover { color: var(--accent); }
+  .collab-affil { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
 
   /* PUBLICATIONS */
-  #publications { background: rgba(0,0,0,0.02); }
+  #publications { background: var(--blue-tint); }
   .pub-tabs { display: flex; gap: 0; margin-bottom: 2rem; border-bottom: 0.5px solid var(--border); }
   .pub-tab { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); padding: 0.6rem 1.25rem; border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
-  .pub-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .pub-tab.active { color: var(--blue); border-bottom-color: var(--blue); }
   .pub-list { display: flex; flex-direction: column; border-top: 0.5px solid var(--border); }
   .pub-item { display: grid; grid-template-columns: 65px 1fr 90px; align-items: start; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 0.5px solid var(--border); }
-  .pub-year { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--gold); letter-spacing: 0.06em; padding-top: 3px; }
+  .pub-year { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--blue); letter-spacing: 0.06em; padding-top: 3px; }
   .pub-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 400; color: var(--ivory); margin-bottom: 0.3rem; line-height: 1.4; }
   .pub-title a { color: inherit; text-decoration: none; }
-  .pub-title a:hover { color: var(--gold); }
+  .pub-title a:hover { color: var(--blue); }
   .pub-authors { font-size: 14px; color: var(--text-muted); margin-bottom: 0.2rem; }
   .pub-journal { font-size: 14px; color: var(--accent); font-style: italic; }
-  .pub-badge { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; padding: 3px 8px; border: 0.5px solid var(--border-gold); color: var(--gold); text-transform: uppercase; text-align: center; white-space: nowrap; }
-  .pub-badge.new { border-color: rgba(0,82,155,0.15); color: var(--accent); }
+  .pub-badge { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; padding: 3px 8px; border: 0.5px solid var(--border-blue); color: var(--blue); text-transform: uppercase; text-align: center; white-space: nowrap; }
+  .pub-badge.new { border-color: rgba(1,33,105,0.25); color: var(--accent); }
 
   /* SERVICES */
-  #services { background: rgba(0,0,0,0.025); }
+  #services { background: var(--blue-tint); }
   .services-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1px; background: var(--border); border: 0.5px solid var(--border); margin-top: 3rem; }
   .svc-card { background: var(--navy); padding: 2rem 1.75rem; transition: background 0.25s; position: relative; overflow: hidden; flex: 0 0 calc(33.333% - 1px); min-width: 250px; }
-  .svc-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s ease; transform-origin: left; }
+  .svc-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--blue); transform: scaleX(0); transition: transform 0.3s ease; transform-origin: left; }
   .svc-card:hover::after { transform: scaleX(1); }
-  .svc-card:hover { background: rgba(0,82,155,0.04); }
+  .svc-card:hover { background: var(--blue-tint); }
   .svc-icon { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 1rem; display: block; }
   .svc-card h3 { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 400; color: var(--ivory); margin-bottom: 0.75rem; line-height: 1.3; }
   .svc-card p { font-size: 15.5px; color: var(--text-muted); line-height: 1.65; }
 
   /* KEYWORDS */
   .keywords { margin-top: 3rem; padding-top: 2rem; border-top: 0.5px solid var(--border); display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .kw { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; padding: 4px 10px; border: 0.5px solid var(--border-gold); color: var(--gold); text-transform: uppercase; }
+  .kw { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; padding: 4px 10px; border: 0.5px solid var(--border-blue); color: var(--blue); text-transform: uppercase; }
 
   /* CONTACT */
   #contact { background: var(--slate); border-top: 0.5px solid var(--border); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; }
   .contact-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.75rem; }
-  .contact-icon { font-size: 1.1rem; color: var(--gold); margin-top: 2px; flex-shrink: 0; }
+  .contact-icon { font-size: 1.1rem; color: var(--blue); margin-top: 2px; flex-shrink: 0; }
   .contact-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.2rem; }
   .contact-value { font-size: 16px; color: var(--ivory); }
   .contact-value a { color: var(--accent); text-decoration: none; }
-  .contact-value a:hover { color: var(--gold); }
+  .contact-value a:hover { color: var(--blue); }
 
-  footer { background: #1A2332; border-top: 0.5px solid var(--border); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
-  .footer-logo { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8A9BB0; letter-spacing: 0.12em; text-transform: uppercase; }
-  .footer-copy { font-size: 14px; color: #8A9BB0; }
+  footer { background: var(--blue); border-top: 0.5px solid rgba(255,255,255,0.15); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .footer-logo { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: rgba(255,255,255,0.75); letter-spacing: 0.12em; text-transform: uppercase; }
+  .footer-copy { font-size: 14px; color: rgba(255,255,255,0.75); }
+  .footer-copy a { color: rgba(255,255,255,0.75); text-decoration: none; }
+  .footer-copy a:hover { color: var(--white); }
   .footer-links { display: flex; gap: 1.5rem; list-style: none; }
-  .footer-links a { font-size: 14px; color: #8A9BB0; text-decoration: none; transition: color 0.2s; }
-  .footer-links a:hover { color: #FFFFFF; }
+  .footer-links a { font-size: 14px; color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--white); }
 
   .scroll-line { position: absolute; bottom: 2rem; left: 3.5rem; display: flex; align-items: center; gap: 0.75rem; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted); letter-spacing: 0.1em; animation: pulse 2.5s ease-in-out infinite; }
   @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.9; } }
-  .scroll-line::before { content: ''; width: 1px; height: 40px; background: linear-gradient(to bottom, transparent, #6C757D); }
+  .scroll-line::before { content: ''; width: 1px; height: 40px; background: linear-gradient(to bottom, transparent, var(--blue-muted)); }
 
   @media (max-width: 900px) {
     .hero { grid-template-columns: 1fr; }
@@ -171,6 +191,7 @@
     .services-grid { justify-content: center; }
     .svc-card { flex: 0 0 calc(50% - 1px); }
     .contact-grid { grid-template-columns: 1fr; }
+    .collab-item { grid-template-columns: 1fr; gap: 0.25rem; }
     nav { padding: 0 1.5rem; }
     .container { padding: 0 1.5rem; }
   }
@@ -187,7 +208,8 @@
 <nav>
   <a class="nav-logo" href="#home">ED&P · Research Group</a>
   <ul class="nav-links">
-    <li><a href="#people">People</a></li>
+    <li><a href="#people">Members</a></li>
+    <li><a href="#collaborators">External members</a></li>
     <li><a href="#publications">Publications</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -200,7 +222,13 @@
 <section id="home" class="hero">
   <div class="hero-left">
     <p class="hero-eyebrow">Research Group</p>
-    <h1 class="hero-title">Economic<br>Dynamics<br>&amp; Policy</h1>
+    <div class="hero-title-row">
+      <h1 class="hero-title">Economic<br>Dynamics<br>&amp; Policy</h1>
+      <div class="hero-usc">
+        <a href="https://www.usc.gal/en" target="_blank" rel="noopener noreferrer">University of Santiago de Compostela</a>
+        <img src="usc.png" alt="University of Santiago de Compostela" class="usc-logo">
+      </div>
+    </div>
     <p class="hero-sub">economicdynamics&amp;policy_researchgroup</p>
     <p class="hero-desc">
       Research areas: growth, productivity, endogenous fertility and efficiency, investment and financial frictions, health policies and welfare. We combine rigorous theory with quantitative methods to inform policy.
@@ -216,7 +244,7 @@
       <p class="timeline-header">Recent Output — Selected</p>
       <div class="timeline-items">
         <div class="tl-item">
-          <div class="tl-dot gold"></div>
+          <div class="tl-dot active"></div>
           <div>
             <span class="tl-year">2025</span>
             <p class="tl-title"><a href="https://doi.org/10.1016/j.econlet.2025.112794" target="_blank" rel="noopener noreferrer">Normalizing VES production functions</a></p>
@@ -275,7 +303,7 @@
     <span class="stat-label">Max h-index</span>
   </div>
   <div class="stat-cell">
-    <span class="stat-num">USC</span>
+    <span class="stat-num"><a href="https://www.usc.gal/en" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">USC</a></span>
     <span class="stat-label">Affiliation</span>
   </div>
 </div>
@@ -285,58 +313,100 @@
   <div class="container">
     <p class="section-label">Team</p>
     <h2 class="section-title">Group Members</h2>
-    <p class="section-desc">Faculty researchers at the University of Santiago de Compostela working on economic dynamics, growth, and policy.</p>
+    <p class="section-desc">Faculty researchers at the <a href="https://www.usc.gal/en" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;">University of Santiago de Compostela</a> working on economic dynamics, growth, and policy.</p>
 
     <div class="people-grid">
       <div class="person-card">
         <img class="person-photo" src="fernando-del-rio.jpg" alt="Fernando del Río">
         <p class="person-name">Fernando del Río</p>
         <p class="person-role">Researcher</p>
-        <p class="person-affil">University of Santiago de Compostela · <a href="mailto:fernando.delrio@usc.es" style="color:var(--accent);text-decoration:none;">fernando.delrio@usc.es</a></p>
+        <p class="person-affil"><a href="https://www.usc.gal/en" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;">University of Santiago de Compostela</a> · <a href="mailto:fernando.delrio@usc.es" style="color:var(--accent);text-decoration:none;">fernando.delrio@usc.es</a></p>
         <p class="person-fields">Macroeconomics · Economic growth · Productivity · Income distribution · Business cycle accounting</p>
         <div class="person-metrics">
           <div class="metric"><span class="metric-val">764</span><span class="metric-lbl">Citations</span></div>
           <div class="metric"><span class="metric-val">12</span><span class="metric-lbl">h-index</span></div>
           <div class="metric"><span class="metric-val">15</span><span class="metric-lbl">i10-index</span></div>
         </div>
+        <p class="person-scholar"><a href="https://scholar.google.com/citations?user=JO4cCMkAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a></p>
       </div>
       <div class="person-card">
         <img class="person-photo" src="francisco-lores-2.jpg" alt="Francisco Xavier Lores">
         <p class="person-name">Francisco Xavier Lores</p>
         <p class="person-role">Researcher</p>
-        <p class="person-affil">University of Santiago de Compostela · <a href="mailto:franciscoxavier.lores@usc.es" style="color:var(--accent);text-decoration:none;">franciscoxavier.lores@usc.es</a></p>
+        <p class="person-affil"><a href="https://www.usc.gal/en" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;">University of Santiago de Compostela</a> · <a href="mailto:franciscoxavier.lores@usc.es" style="color:var(--accent);text-decoration:none;">franciscoxavier.lores@usc.es</a></p>
         <p class="person-fields">Macroeconomics · Economic growth · Business cycles · Business cycle accounting · Investment frictions · Regulation and rent-seeking</p>
         <div class="person-metrics">
           <div class="metric"><span class="metric-val">162</span><span class="metric-lbl">Citations</span></div>
           <div class="metric"><span class="metric-val">7</span><span class="metric-lbl">h-index</span></div>
           <div class="metric"><span class="metric-val">6</span><span class="metric-lbl">i10-index</span></div>
         </div>
+        <p class="person-scholar"><a href="https://scholar.google.com/citations?user=grQsyBYAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a></p>
       </div>
       <div class="person-card">
         <img class="person-photo" src="PerezNievas.jpg" alt="Mikel Pérez-Nievas">
         <p class="person-name">Mikel Pérez-Nievas</p>
         <p class="person-role">Researcher</p>
-        <p class="person-affil">University of Santiago de Compostela · <a href="mailto:miguel.perez-nievas@usc.es" style="color:var(--accent);text-decoration:none;">miguel.perez-nievas@usc.es</a></p>
+        <p class="person-affil"><a href="https://www.usc.gal/en" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;">University of Santiago de Compostela</a> · <a href="mailto:miguel.perez-nievas@usc.es" style="color:var(--accent);text-decoration:none;">miguel.perez-nievas@usc.es</a></p>
         <p class="person-fields">Microeconomics · Endogenous fertility · Social choice · Efficiency · Information economics</p>
         <div class="person-metrics">
           <div class="metric"><span class="metric-val">94</span><span class="metric-lbl">Citations</span></div>
           <div class="metric"><span class="metric-val">5</span><span class="metric-lbl">h-index</span></div>
           <div class="metric"><span class="metric-val">1</span><span class="metric-lbl">i10-index</span></div>
         </div>
+        <p class="person-scholar"><a href="https://scholar.google.com/citations?user=Kx5Re7sAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a></p>
       </div>
       <div class="person-card">
         <img class="person-photo" src="Antonio-rodriguez-sampayo.jpg" alt="Antonio Sampayo">
         <p class="person-name">Antonio Sampayo</p>
         <p class="person-role">Researcher</p>
-        <p class="person-affil">University of Santiago de Compostela · <a href="mailto:ar.sampayo@usc.es" style="color:var(--accent);text-decoration:none;">ar.sampayo@usc.es</a> · <a href="https://arsampayo.github.io/sampayo-website/sampayo.html" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;">personal web</a></p>
+        <p class="person-affil"><a href="https://www.usc.gal/en" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;">University of Santiago de Compostela</a> · <a href="mailto:ar.sampayo@usc.es" style="color:var(--accent);text-decoration:none;">ar.sampayo@usc.es</a> · <a href="https://arsampayo.github.io/sampayo-website/sampayo.html" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;">personal web</a></p>
         <p class="person-fields">Technology licensing · Health economics · Dependency · Durable goods · Productivity</p>
         <div class="person-metrics">
           <div class="metric"><span class="metric-val">128</span><span class="metric-lbl">Citations</span></div>
           <div class="metric"><span class="metric-val">6</span><span class="metric-lbl">h-index</span></div>
           <div class="metric"><span class="metric-val">6</span><span class="metric-lbl">i10-index</span></div>
         </div>
+        <p class="person-scholar"><a href="https://scholar.google.com/citations?user=nPSRBv4AAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a></p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- EXTERNAL COLLABORATORS -->
+<section id="collaborators">
+  <div class="container">
+    <p class="section-label">Network</p>
+    <h2 class="section-title">External members</h2>
+    <ul class="collab-list">
+      <li class="collab-item">
+        <span class="collab-name"><a href="https://www.amse-aixmarseille.fr/en/members/boucekkine" target="_blank" rel="noopener noreferrer">Raouf Boucekkine</a></span>
+        <span class="collab-affil">Aix-Marseille School of Economics (AMSE)</span>
+      </li>
+      <li class="collab-item">
+        <span class="collab-name"><a href="http://webs.uvigo.es/egimenez" target="_blank" rel="noopener noreferrer">Eduardo Giménez</a></span>
+        <span class="collab-affil">University of Vigo</span>
+      </li>
+      <li class="collab-item">
+        <span class="collab-name"><a href="https://sites.google.com/view/omar-licandro/home" target="_blank" rel="noopener noreferrer">Omar Licandro</a></span>
+        <span class="collab-affil">University of Leicester</span>
+      </li>
+      <li class="collab-item">
+        <span class="collab-name"><a href="https://catolicabs.porto.ucp.pt/node/371" target="_blank" rel="noopener noreferrer">Francisco Rebelo</a></span>
+        <span class="collab-affil">Catholic University of Porto</span>
+      </li>
+      <li class="collab-item">
+        <span class="collab-name"><a href="https://sites.google.com/view/friveiroformoso" target="_blank" rel="noopener noreferrer">Fernando Riveiro</a></span>
+        <span class="collab-affil">University of the Balearic Islands</span>
+      </li>
+      <li class="collab-item">
+        <span class="collab-name"><a href="https://webx06.webs.uvigo.es/pdi/eva-rodriguez-miguez-es/" target="_blank" rel="noopener noreferrer">Eva Rodríguez-Míguez</a></span>
+        <span class="collab-affil">University of Vigo</span>
+      </li>
+      <li class="collab-item">
+        <span class="collab-name"><a href="https://sites.google.com/view/alba-sonora-noya/" target="_blank" rel="noopener noreferrer">Alba Sóñora</a></span>
+        <span class="collab-affil">UNED</span>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -723,15 +793,15 @@
         <div class="contact-item">
           <span class="contact-icon">◈</span>
           <div>
-            <p class="contact-label">Affiliation</p>
-            <p class="contact-value">University of Santiago de Compostela<br>School of Economics and Business</p>
+            <p class="contact-label">Postal address</p>
+            <p class="contact-value">Dpto. de Fundamentos da Análise Económica.<br>Facultade de CC. Económicas e Empresariais.<br>Avda. Burgo das Nacións, s/n.<br>15782 Santiago de Compostela.<br>Spain</p>
           </div>
         </div>
         <div class="contact-item">
           <span class="contact-icon">◈</span>
           <div>
             <p class="contact-label">Contact</p>
-            <p class="contact-value"><a href="mailto:ar.sampayo@usc.es">ar.sampayo@usc.es</a></p>
+            <p class="contact-value"><a href="mailto:ar.sampayo@usc.es">ar.sampayo@usc.es</a><br><a href="tel:+34881811554">(+34) 881811554</a></p>
           </div>
         </div>
         <div class="contact-item">
@@ -742,27 +812,6 @@
           </div>
         </div>
       </div>
-      <div>
-        <div class="contact-item">
-          <span class="contact-icon">◈</span>
-          <div>
-            <p class="contact-label">Google Scholar Profiles</p>
-            <p class="contact-value">
-              <a href="https://scholar.google.com/citations?user=nPSRBv4AAAAJ" target="_blank">Antonio Sampayo</a><br>
-              <a href="https://scholar.google.com/citations?user=JO4cCMkAAAAJ" target="_blank">Fernando del Río</a><br>
-              <a href="https://scholar.google.com/citations?user=grQsyBYAAAAJ" target="_blank">Francisco Xavier Lores</a><br>
-              <a href="https://scholar.google.com/citations?user=Kx5Re7sAAAAJ" target="_blank">Mikel Pérez-Nievas</a>
-            </p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <span class="contact-icon">◈</span>
-          <div>
-            <p class="contact-label">External Collaborators' Affiliations</p>
-            <p class="contact-value">University of Vigo · Complutense University in Madrid · AMSE-Marseille · University of Leicester · UNED · University of the Balearic Islands · Catholic University in Porto</p>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -770,14 +819,15 @@
 <footer>
   <span class="footer-logo">economicdynamics&amp;policy_researchgroup</span>
   <ul class="footer-links">
-    <li><a href="#people">People</a></li>
+    <li><a href="#people">Members</a></li>
+    <li><a href="#collaborators">External members</a></li>
     <li><a href="#publications">Publications</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="gl.html" style="color:var(--gold);"><svg width="18" height="12" viewBox="0 0 300 200" style="vertical-align:middle;margin-right:4px;border:0.5px solid rgba(0,0,0,0.15)"><rect width="300" height="200" fill="#fff"/><polygon points="0,0 90,0 300,200 210,200" fill="#2D9CDB"/></svg>GL</a></li>
-    <li><a href="index.html" style="color:var(--gold);">⌂ Home</a></li>
+    <li><a href="gl.html"><svg width="18" height="12" viewBox="0 0 300 200" style="vertical-align:middle;margin-right:4px;border:0.5px solid rgba(255,255,255,0.3)"><rect width="300" height="200" fill="#fff"/><polygon points="0,0 90,0 300,200 210,200" fill="#2D9CDB"/></svg>GL</a></li>
+    <li><a href="index.html">⌂ Home</a></li>
   </ul>
-  <span class="footer-copy">© 2025 ED&P Research Group · USC</span>
+  <span class="footer-copy">© 2025 ED&amp;P Research Group · <a href="https://www.usc.gal/en" target="_blank" rel="noopener noreferrer">USC</a></span>
 </footer>
 
 </body>
